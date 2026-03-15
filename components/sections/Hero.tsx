@@ -8,7 +8,7 @@ const Hero = () => {
         <div className="flex w-full flex-col lg:w-3/4">
           <p className="text-2xl font-semibold text-gray-400 lg:text-3xl">HEY I&apos;M</p>
 
-          <h1 className="bg-[url('/assets/mask.png')] bg-cover bg-center bg-clip-text text-6xl font-bold leading-none text-transparent lg:text-8xl lg:leading-normal">
+          <h1 className="bg-[url('/assets/mask.png')] bg-cover bg-center bg-clip-text text-6xl font-bold tracking-tight leading-none text-transparent lg:text-8xl lg:leading-normal">
             MANAS SINGH
           </h1>
 
