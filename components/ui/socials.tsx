@@ -12,7 +12,7 @@ const SocialButton = ({ imgSrc, alt, link }: SocialButtonProps) => (
     href={link}
     target="_blank"
     rel="noopener noreferrer"
-    className="mx-2 inline-flex h-12 w-12 items-center justify-center rounded-full border-0 transition-transform duration-200 hover:-translate-y-0.5 hover:scale-105"
+    className="mx-2 inline-flex h-8 w-8 items-center justify-center rounded-full border-0 transition-transform duration-200 hover:-translate-y-0.5 hover:scale-105"
   >
     <Image
       src={imgSrc}
