@@ -12,7 +12,7 @@ const Hero = () => {
             </p>
           </div>
 
-          <h1 className="mt-1 text-4xl font-medium tracking-tight text-neutral-200 font-instrument lg:mt-5 lg:text-7xl">
+          <h1 className="mt-1 text-4xl font-medium text-neutral-200 font-instrument lg:mt-5 lg:text-7xl">
             Manas Singh
           </h1>
 
