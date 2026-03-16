@@ -49,7 +49,7 @@
   display: flex;
   gap: 0;
   width: max-content;
-  animation: scroll 28s linear infinite;
+  animation: scroll 48s linear infinite;
 }
 
 .marqueeTrack:hover {
@@ -57,7 +57,7 @@
 }
 
 .reverse {
-  animation: scrollReverse 34s linear infinite;
+  animation: scrollReverse 58s linear infinite;
 }
 
 .techItem {
@@ -76,7 +76,7 @@
 }
 
 .techItem:hover .techIcon svg {
-  fill: #22c55e;
+  fill: #60a5fa;
 }
 
 .techItem:hover {

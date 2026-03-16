@@ -1,32 +1,31 @@
 import Image from "next/image";
-import SocialButton from "../ui/socials";
 
 const Hero = () => {
   return (
-    <div className="flex w-full flex-col gap-8 py-8 text-white lg:gap-1 lg:pt-25">
-      <div className="flex w-full flex-col gap-10 lg:gap-10 lg:flex-row lg:items-start">
-        <div className="flex w-full flex-col lg:w-3/4">
-          <div className="mb-3 flex items-center gap-2">
+    <div className="flex w-full flex-col gap-6 py-6 text-white lg:gap-1 lg:pt-25">
+      <div className="heroLayout flex w-full flex-col gap-6 lg:gap-10 lg:flex-row lg:items-start">
+        <div className="heroTextColumn flex w-full flex-col lg:w-3/4">
+          <div className="mb-2 flex items-center gap-2 lg:mb-3">
             <span className="h-2.5 w-2.5 rounded-full bg-green-500 animate-pulse" />
             <p className="text-sm font-semibold text-gray-400 lg:text-sm">
               AVAILABLE FOR WORK
             </p>
           </div>
 
-          <h1 className="text-5xl mt-2  text-neutral-200 font-medium tracking-tight lg:mt-5 lg:text-7xl font-instrument">
+          <h1 className="mt-1 text-4xl font-medium tracking-tight text-neutral-200 font-instrument lg:mt-5 lg:text-7xl">
             Manas Singh
           </h1>
 
-          <h2 className="text-4xl font-medium text-neutral-500 lg:text-6xl font-sans italic">
+          <h2 className="mt-1 text-3xl font-medium text-neutral-500 font-sans italic lg:mt-0 lg:text-6xl">
             Frontend Developer
           </h2>
 
-          <p className="mt-4 max-w-150 text-md text-gray-400 lg:mt-10 lg:max-w-3/4 lg:text-lg">
+          <p className="mt-3 max-w-full text-sm text-gray-400 lg:mt-10 lg:max-w-3/4 lg:text-lg">
             I design and code beautifully simple things, — turning complex ideas
             into clean, fast interfaces people love using
           </p>
 
-          <div className="mt-3 flex items-center gap-5 lg:mt-10">
+          <div className="mt-4 flex flex-row items-center gap-3 lg:mt-10 lg:gap-5">
             {/* <div className="flex items-center gap-4">
           <SocialButton imgSrc="/icons/linkdin.png" alt="LinkedIn" link="#" />
           <SocialButton imgSrc="/icons/github.svg" alt="GitHub" link="#" />
@@ -45,7 +44,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="lg:w-1/4 lg:self-start">
+        <div className="avatarContainer lg:w-1/4 lg:self-start">
           <Image
             src="/assets/avatar.jpg"
             alt="Profile"

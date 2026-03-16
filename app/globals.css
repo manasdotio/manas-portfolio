@@ -24,3 +24,18 @@
     text-decoration: none;
   }
 }
+
+@media (max-width: 768px) {
+  .avatarContainer {
+    display: none;
+  }
+
+  .heroLayout {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .heroTextColumn {
+    width: 100%;
+  }
+}
