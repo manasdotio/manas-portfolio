@@ -1,6 +1,6 @@
 const headerLinks = [
   {
-    label: "LINKDIN",
+    label: "LINKEDIN",
     href: "#home",
     icon: "/icons/up-arrow.svg",
   },
@@ -37,8 +37,8 @@ const Header = () => {
               </Link>
             </li>
           ))}
-          <li className="flex items-center rounded-3xl">
-            <button className="cursor-pointer rounded-3xl border-0 bg-neutral-300 px-3 py-1 text-l font-semibold text-black">
+          <li className="flex items-center">
+            <button className="cursor-pointer rounded-md border  px-3 py-1 text-l font-semribold text-neutral-500 transition-colors duration-200 hover:border-neutral-300 hover:text-neutral-300">
               CONTACT NOW
             </button>
           </li>

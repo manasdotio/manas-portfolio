@@ -1,7 +1,11 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+
 
 @theme {
-  --font-sans: "Helvetica", "Arial", sans-serif;
+  --font-helvetica: "Helvetica", "Arial", sans-serif;
+  --font-instrument: "Instrument Serif", serif;
+  --font-sans:serif, sans-serif;
 }
 
 @layer base {
@@ -13,6 +17,7 @@
   body {
     width: 100%;
     min-height: 100%;
+    font-family: "Helvetica", "Arial", sans-serif;
   }
 
   a {
