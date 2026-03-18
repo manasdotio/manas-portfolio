@@ -2,9 +2,9 @@ import Link from "next/link";
 import styles from "./About.module.css";
 
 const stats = [
-  { value: "2+", label: "Years building" },
+  { value: "5+", label: "APIs built & deployed" },
+  { value: "3", label: "Databases worked with" },
   { value: "12", label: "Projects shipped" },
-  { value: "∞", label: "Tabs open" },
   { value: "1", label: "Cup of chai / day" },
 ];
 

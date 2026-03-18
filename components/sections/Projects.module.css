@@ -7,6 +7,33 @@
   margin-bottom: 48px;
 }
 
+.tagLegend {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legendDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: currentColor;
+}
+
+.legendText {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: currentColor;
+}
+
 .headingEyebrow {
   display: flex;
   align-items: center;
@@ -24,7 +51,7 @@
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #444444;
+  color: #666666;
   font-variant: small-caps;
   font-weight: 400;
 }
@@ -33,7 +60,7 @@
 .headingSecondary {
   font-family: var(--font-instrument);
   font-size: 56px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1;
   margin: 0;
 }
@@ -43,7 +70,7 @@
 }
 
 .headingSecondary {
-  color: #444444;
+  color: #3d3d3d;
   font-style: italic;
 }
 
@@ -87,7 +114,7 @@
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #444444;
+  color: #555555;
 }
 
 .status {
@@ -131,8 +158,8 @@
 .projectName {
   font-family: var(--font-instrument);
   font-size: 34px;
-  font-weight: 400;
-  color: var(--color-text-secondary);
+  font-weight: 500;
+  color: #e0e0e0;
   letter-spacing: -0.01em;
   line-height: 1.1;
   margin: 0 0 14px;
@@ -140,7 +167,7 @@
 }
 
 .projectRow:hover .projectName {
-  color: var(--color-text-primary);
+  color: #ffffff;
 }
 
 .description {
@@ -152,6 +179,30 @@
   margin: 0 0 24px;
 }
 
+.archRow {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: center;
+  background: #0d0d0d;
+  border: 1px solid var(--color-border);
+  padding: 8px 10px;
+  margin-bottom: 18px;
+}
+
+.archLabel {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #555555;
+}
+
+.archText {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #888888;
+}
+
 .tags {
   display: flex;
   flex-wrap: wrap;
@@ -160,10 +211,10 @@
 }
 
 .tag {
-  font-size: 10px;
+  font-size: 11px;
   color: #888888;
   background: #161616;
-  border: none;
+  border: 1px solid transparent;
   padding: 5px 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -172,6 +223,46 @@
 
 .tag:hover {
   color: #a3a3a3;
+}
+
+.tagFrontend {
+  color: #c4b5fd;
+  background: rgba(196, 181, 253, 0.12);
+  border: 1px solid rgba(196, 181, 253, 0.25);
+}
+
+.tagBackend {
+  color: #7dd3fc;
+  background: rgba(125, 211, 252, 0.12);
+  border: 1px solid rgba(125, 211, 252, 0.25);
+}
+
+.tagDatabase {
+  color: #86efac;
+  background: rgba(134, 239, 172, 0.12);
+  border: 1px solid rgba(134, 239, 172, 0.25);
+}
+
+.tagInfra {
+  color: #fcd34d;
+  background: rgba(252, 211, 77, 0.12);
+  border: 1px solid rgba(252, 211, 77, 0.25);
+}
+
+.legendFrontend {
+  color: #c4b5fd;
+}
+
+.legendBackend {
+  color: #7dd3fc;
+}
+
+.legendDatabase {
+  color: #86efac;
+}
+
+.legendInfra {
+  color: #fcd34d;
 }
 
 .links {
@@ -259,7 +350,7 @@
 
 .chromeUrl {
   font-size: 10px;
-  color: #444444;
+  color: #555555;
   letter-spacing: 0.04em;
   white-space: nowrap;
 }
@@ -309,7 +400,7 @@
 
 .moreText {
   font-size: 13px;
-  color: #444444;
+  color: #666666;
   margin-right: 8px;
 }
 
@@ -331,7 +422,7 @@
 
 .countText {
   font-size: 11px;
-  color: #444444;
+  color: #555555;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }

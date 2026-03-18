@@ -11,6 +11,7 @@ type Project = {
   year: number;
   status: ProjectStatus;
   description: string;
+  architecture: string;
   tags: string[];
   liveUrl?: string;
   githubUrl: string;
@@ -24,6 +25,7 @@ const projects: Project[] = [
     status: "Live",
     description:
       "A full-stack app to manage and track your personal book library. Add books, set reading status, and organize your wishlist.",
+    architecture: "Node API with typed Next.js client and relational persistence.",
     tags: ["Next.js", "TypeScript", "Tailwind", "Node.js"],
     liveUrl: "#",
     githubUrl: GITHUB_HREF,
@@ -35,6 +37,7 @@ const projects: Project[] = [
     status: "In Progress",
     description:
       "The site you are looking at. Built with a focus on typography, whitespace, and motion. Custom marquee and minimal dark aesthetic throughout.",
+    architecture: "Component-driven Next.js UI with modular section styling.",
     tags: ["Next.js", "TypeScript", "Tailwind", "Framer Motion"],
     liveUrl: "#",
     githubUrl: GITHUB_HREF,
@@ -46,6 +49,7 @@ const projects: Project[] = [
     status: "Live",
     description:
       "A team productivity dashboard for tracking tasks, sprint priorities, and release milestones with clean visual reporting.",
+    architecture: "React dashboard backed by PostgreSQL and containerized services.",
     tags: ["React", "TypeScript", "PostgreSQL", "Docker"],
     githubUrl: GITHUB_HREF,
     image: "/assets/project.png",
@@ -53,6 +57,19 @@ const projects: Project[] = [
 ];
 
 const formatProjectIndex = (index: number) => String(index + 1).padStart(2, "0");
+
+const getTagTone = (tag: string) => {
+  const frontendTags = new Set(["Next.js", "React", "TypeScript", "Tailwind", "Framer Motion"]);
+  const backendTags = new Set(["Node.js", "Express", "NestJS"]);
+  const databaseTags = new Set(["PostgreSQL", "MongoDB", "MySQL", "Prisma"]);
+  const infraTags = new Set(["Docker", "Kubernetes", "AWS", "Vercel"]);
+
+  if (frontendTags.has(tag)) return styles.tagFrontend;
+  if (backendTags.has(tag)) return styles.tagBackend;
+  if (databaseTags.has(tag)) return styles.tagDatabase;
+  if (infraTags.has(tag)) return styles.tagInfra;
+  return "";
+};
 
 const Projects = () => {
   return (
@@ -87,9 +104,14 @@ const Projects = () => {
                 <h3 className={styles.projectName}>{project.name}</h3>
                 <p className={styles.description}>{project.description}</p>
 
+                <div className={styles.archRow}>
+                  <span className={styles.archLabel}>Arch</span>
+                  <span className={styles.archText}>{project.architecture}</span>
+                </div>
+
                 <div className={styles.tags}>
                   {project.tags.map((tag) => (
-                    <span className={styles.tag} key={`${project.name}-${tag}`}>
+                    <span className={`${styles.tag} ${getTagTone(tag)}`} key={`${project.name}-${tag}`}>
                       {tag}
                     </span>
                   ))}
@@ -132,7 +154,7 @@ const Projects = () => {
         })}
       </div>
 
-        <div className={styles.bottomCta}>
+      <div className={styles.bottomCta}>
         <div>
           <span className={styles.moreText}>More on</span>
           <Link href={GITHUB_HREF} className={styles.moreLink}>

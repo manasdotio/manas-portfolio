@@ -9,21 +9,168 @@
   gap: 16px;
 }
 
-.sectionTitle {
-  font-size: 12px;
+.stackGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.stackCard {
+  background: #0f0f0f;
+  border: 1px solid #1e1e1e;
+  padding: 18px;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.stackCard:hover {
+  background: #131313;
+}
+
+.stackCard.frontend:hover {
+  border-color: rgba(196, 181, 253, 0.4);
+  box-shadow: 0 0 0 1px rgba(196, 181, 253, 0.4);
+}
+
+.stackCard.backend:hover {
+  border-color: rgba(125, 211, 252, 0.4);
+  box-shadow: 0 0 0 1px rgba(125, 211, 252, 0.4);
+}
+
+.stackCard.database:hover {
+  border-color: rgba(134, 239, 172, 0.4);
+  box-shadow: 0 0 0 1px rgba(134, 239, 172, 0.4);
+}
+
+.stackCard.infra:hover {
+  border-color: rgba(252, 211, 77, 0.4);
+  box-shadow: 0 0 0 1px rgba(252, 211, 77, 0.4);
+}
+
+.categoryLabel {
+  margin: 0;
+  font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #6b7280;
   font-weight: 600;
 }
 
-.headerLine {
-  flex: 1;
-  height: 1px;
-  background: #1a1a1a;
+.cardHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
 }
 
-.marqueeWrapper {
+.categoryBadge {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid currentColor;
+  transition: background-color 0.25s ease;
+}
+
+.categoryBadge.frontend {
+  background: rgba(196, 181, 253, 0.1);
+}
+
+.categoryBadge.backend {
+  background: rgba(125, 211, 252, 0.1);
+}
+
+.categoryBadge.database {
+  background: rgba(134, 239, 172, 0.1);
+}
+
+.categoryBadge.infra {
+  background: rgba(252, 211, 77, 0.1);
+}
+
+.stackCard.frontend:hover .categoryBadge.frontend {
+  background: rgba(196, 181, 253, 0.2);
+}
+
+.stackCard.backend:hover .categoryBadge.backend {
+  background: rgba(125, 211, 252, 0.2);
+}
+
+.stackCard.database:hover .categoryBadge.database {
+  background: rgba(134, 239, 172, 0.2);
+}
+
+.stackCard.infra:hover .categoryBadge.infra {
+  background: rgba(252, 211, 77, 0.2);
+}
+
+.frontend {
+  color: #c4b5fd;
+}
+
+.backend {
+  color: #7dd3fc;
+}
+
+.database {
+  color: #86efac;
+}
+
+.infra {
+  color: #fcd34d;
+}
+
+.itemList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.itemText {
+  font-size: 13px;
+  color: #808080;
+  line-height: 1.5;
+  transition: color 0.25s ease;
+}
+
+.itemRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.itemIcon {
+  color: #555555;
+  transition: color 0.25s ease;
+}
+
+.stackCard:hover .itemText {
+  color: #b3b3b3;
+}
+
+.stackCard.frontend:hover .itemIcon {
+  color: #c4b5fd;
+}
+
+.stackCard.backend:hover .itemIcon {
+  color: #7dd3fc;
+}
+
+.stackCard.database:hover .itemIcon {
+  color: #86efac;
+}
+
+.stackCard.infra:hover .itemIcon {
+  color: #fcd34d;
+}
+
+.marqueeStrip {
+  margin-top: 14px;
   position: relative;
   overflow: hidden;
   --edge-fade: 80px;
@@ -45,72 +192,41 @@
 
 .marqueeTrack {
   display: flex;
-  gap: 0;
+  gap: 10px;
   width: max-content;
-  animation: scroll 48s linear infinite;
+  animation: scroll 45s linear infinite;
 }
 
-.marqueeTrack:hover {
+.marqueeStrip:hover .marqueeTrack {
   animation-play-state: paused;
 }
 
-.reverse {
-  animation: scrollReverse 58s linear infinite;
-}
-
-.techItem {
+.marqueeItem {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 28px;
-  border-right: 1px solid #161616;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px solid #222222;
+  background: #0d0d0d;
   white-space: nowrap;
-  cursor: default;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-.techItem:hover .techName {
-  color: #ffffff;
-}
+/* .marqueeDot removed: color dots no longer used in marquee */
 
-.techItem:hover .techIcon svg {
-  fill: #60a5fa;
-}
-
-.techItem:hover {
-  background-color: rgba(34, 197, 94, 0.08);
-  border-right-color: rgba(34, 197, 94, 0.3);
-}
-
-.techIcon {
-  width: 18px;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.92;
-  flex-shrink: 0;
-}
-
-.techIcon svg {
-  width: 18px;
-  height: 18px;
-  fill: #f5f5f5;
-  transition: fill 0.2s ease;
-}
-
-.techName {
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  color: #c7c7c7;
-  text-transform: uppercase;
+.marqueeIcon {
+  color: var(--color-text-ghost);
   transition: color 0.2s ease;
 }
 
-.divider {
-  height: 1px;
-  background: #111111;
-  margin-top: 1px;
+.marqueeName {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: #a1a1a1;
+  text-transform: uppercase;
+}
+
+.marqueeItem:hover .marqueeIcon {
+  color: #888888;
 }
 
 @keyframes scroll {
@@ -120,16 +236,6 @@
 
   100% {
     transform: translateX(-50%);
-  }
-}
-
-@keyframes scrollReverse {
-  0% {
-    transform: translateX(-50%);
-  }
-
-  100% {
-    transform: translateX(0);
   }
 }
 
@@ -143,11 +249,15 @@
     margin-bottom: 24px;
   }
 
-  .marqueeWrapper {
+  .stackGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .marqueeStrip {
     --edge-fade: 40px;
   }
 
-  .techItem {
-    padding: 10px 20px;
+  .marqueeItem {
+    padding: 8px 12px;
   }
 }

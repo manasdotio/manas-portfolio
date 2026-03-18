@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <div className="flex w-full flex-col gap-6 py-6 text-white lg:gap-1 lg:pt-25">
+    <div className="flex w-full flex-col gap-6 pt-6 pb-12 text-white lg:gap-1 lg:pt-25">
       <div className="heroLayout flex w-full flex-col gap-6 lg:gap-10 lg:flex-row lg:items-start">
         <div className="heroTextColumn flex w-full flex-col lg:w-3/4">
           <div className="mb-2 flex items-center gap-2 lg:mb-3">
@@ -21,8 +21,7 @@ const Hero = () => {
           </h2>
 
           <p className="mt-3 max-w-full text-sm text-text-muted lg:mt-10 lg:max-w-3/4 lg:text-lg">
-            I design and code beautifully simple things, — turning complex ideas
-            into clean, fast interfaces people love using
+            I design and build complete web applications — from database to UI, focused on clean code and products that actually work.
           </p>
 
           <div className="mt-4 flex flex-row items-center gap-3 lg:mt-10 lg:gap-5">
