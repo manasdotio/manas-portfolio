@@ -1,5 +1,8 @@
 import Link from "next/link";
 import styles from "./Projects.module.css";
+import { SOCIAL_LINKS } from "../data/links";
+
+const GITHUB_HREF = SOCIAL_LINKS.find((s) => s.platform === "GitHub")?.href ?? "#";
 
 type ProjectStatus = "Live" | "In Progress";
 
@@ -23,7 +26,7 @@ const projects: Project[] = [
       "A full-stack app to manage and track your personal book library. Add books, set reading status, and organize your wishlist.",
     tags: ["Next.js", "TypeScript", "Tailwind", "Node.js"],
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: GITHUB_HREF,
     image: "/assets/project.png",
   },
   {
@@ -34,7 +37,7 @@ const projects: Project[] = [
       "The site you are looking at. Built with a focus on typography, whitespace, and motion. Custom marquee and minimal dark aesthetic throughout.",
     tags: ["Next.js", "TypeScript", "Tailwind", "Framer Motion"],
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: GITHUB_HREF,
     image: "/assets/project.png",
   },
   {
@@ -44,7 +47,7 @@ const projects: Project[] = [
     description:
       "A team productivity dashboard for tracking tasks, sprint priorities, and release milestones with clean visual reporting.",
     tags: ["React", "TypeScript", "PostgreSQL", "Docker"],
-    githubUrl: "#",
+    githubUrl: GITHUB_HREF,
     image: "/assets/project.png",
   },
 ];
@@ -129,10 +132,10 @@ const Projects = () => {
         })}
       </div>
 
-      <div className={styles.bottomCta}>
+        <div className={styles.bottomCta}>
         <div>
           <span className={styles.moreText}>More on</span>
-          <Link href="#" className={styles.moreLink}>
+          <Link href={GITHUB_HREF} className={styles.moreLink}>
             GitHub ↗
           </Link>
         </div>

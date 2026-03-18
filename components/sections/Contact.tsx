@@ -1,12 +1,6 @@
 import Link from "next/link";
 import styles from "./Contact.module.css";
-
-const socials = [
-  { platform: "LinkedIn", handle: "@manassingh", href: "#" },
-  { platform: "GitHub", handle: "@manassingh", href: "#" },
-  { platform: "X", handle: "@manassingh", href: "#" },
-  { platform: "Email", handle: "manas@example.com", href: "mailto:manas@example.com" },
-];
+import { SOCIAL_LINKS } from "../data/links";
 
 const Contact = () => {
   return (
@@ -56,10 +50,10 @@ const Contact = () => {
           <p className={styles.blockLabelWide}>Find me on</p>
 
           <div className={styles.socialList}>
-            {socials.map((item, index) => (
+            {SOCIAL_LINKS.map((item, index) => (
               <Link
                 href={item.href}
-                className={`${styles.socialRow} ${index === socials.length - 1 ? styles.socialRowLast : ""}`}
+                className={`${styles.socialRow} ${index === SOCIAL_LINKS.length - 1 ? styles.socialRowLast : ""}`}
                 key={item.platform}
               >
                 <span className={styles.socialPlatform}>{item.platform}</span>

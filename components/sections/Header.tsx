@@ -1,22 +1,6 @@
-const headerLinks = [
-  {
-    label: "LINKEDIN",
-    href: "#home",
-    icon: "/icons/up-arrow.svg",
-  },
-  {
-    label: "GITHUB",
-    href: "#home",
-    icon: "/icons/up-arrow.svg",
-  },
-  {
-    label: "X",
-    href: "#home",
-    icon: "/icons/up-arrow.svg",
-  },
-];
 import Image from "next/image";
 import Link from "next/link";
+import { SOCIAL_LINKS } from "../data/links";
 
 const Header = () => {
   return (
@@ -28,16 +12,16 @@ const Header = () => {
         </div>
 
         <ul className="hidden items-center gap-15 lg:flex">
-          {headerLinks.map(({ label, href, icon }) => (
-            <li key={label}>
+          {SOCIAL_LINKS.map(({ platform, href }) => (
+            <li key={platform}>
               <Link
                 href={href}
                 className="group flex lg:text-md font-semibold text-text-primary transition-colors duration-300 hover:text-white"
               >
                 <div className="flex items-center">
-                  {label}
+                  {platform.toUpperCase()}
                   <div className="ml rotate-45 transition-transform duration-300 group-hover:rotate-90">
-                    <Image src={icon} alt="" width={18} height={18} />
+                    <Image src="/icons/up-arrow.svg" alt="" width={18} height={18} />
                   </div>
                 </div>
               </Link>
