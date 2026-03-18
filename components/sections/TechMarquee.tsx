@@ -107,7 +107,7 @@ const TechMarquee = () => {
     <section className={styles.section} aria-label="Technology stack">
       <div className={styles.sectionHeader}>
         <div className="mb-12 mt-8">
-          <div className="mb-4 flex items-center gap-3 uppercase text-[11px] font-normal tracking-[0.18em] text-[#333333] [font-variant:small-caps]">
+          <div className="mb-4 flex items-center gap-3 uppercase text-[11px] font-normal tracking-[0.18em] text-text-ghost [font-variant:small-caps]">
             <span className="h-px w-12 bg-[#222222]" />
             <span>01</span>
           </div>
