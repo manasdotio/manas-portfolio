@@ -7,20 +7,20 @@ const Hero = () => {
         <div className="heroTextColumn flex w-full flex-col lg:w-3/4">
           <div className="mb-2 flex items-center gap-2 lg:mb-3">
             <span className="h-2.5 w-2.5 rounded-full bg-green-500 animate-pulse" />
-            <p className="text-sm font-semibold text-gray-400 lg:text-sm">
+            <p className="text-sm font-semibold text-text-secondary lg:text-sm">
               AVAILABLE FOR WORK
             </p>
           </div>
 
-          <h1 className="mt-1 text-4xl font-medium tracking-tight text-neutral-200 font-sans lg:mt-5 lg:text-7xl">
-            Manas Singh
+          <h1 className="mt-1 text-4xl font-medium tracking-tight text-text-primary font-sans lg:mt-5 lg:text-7xl">
+            Manas Singh.
           </h1>
 
-          <h2 className="mt-1 text-3xl font-medium text-neutral-500 font-sans italic lg:mt-0 lg:text-6xl">
+          <h2 className="mt-1 text-3xl font-medium text-text-secondary font-sans italic lg:mt-0 lg:text-6xl">
             Frontend Developer
           </h2>
 
-          <p className="mt-3 max-w-full text-sm text-gray-400 lg:mt-10 lg:max-w-3/4 lg:text-lg">
+          <p className="mt-3 max-w-full text-sm text-text-muted lg:mt-10 lg:max-w-3/4 lg:text-lg">
             I design and code beautifully simple things, — turning complex ideas
             into clean, fast interfaces people love using
           </p>
@@ -31,13 +31,13 @@ const Hero = () => {
           <SocialButton imgSrc="/icons/github.svg" alt="GitHub" link="#" />
         </div> */}
 
-            <div className="flex rounded-lg border-2 border-neutral-800 ">
-              <button className="cursor-pointer appearance-none px-5 py-2 text-sm font-semibold text-neutral-300">
+            <div className="flex rounded-lg border-2 border-border hover:border-border-hover">
+              <button className="cursor-pointer appearance-none px-5 py-2 text-sm font-semibold text-text-secondary  hover:text-text-hover transition-colors duration-5000">
                 VIEW WORK
               </button>
             </div>
-            <div className="flex rounded-lg border-2 border-neutral-800">
-              <button className="cursor-pointer appearance-none px-5 py-2 text-sm font-semibold text-neutral-300">
+            <div className="flex rounded-lg border-2 border-border hover:border-border-hover">
+              <button className="cursor-pointer appearance-none px-5 py-2 text-sm font-semibold text-text-secondary hover:text-text-hover transition-colors duration-5000">
                 RESUME
               </button>
             </div>

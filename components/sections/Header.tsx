@@ -20,14 +20,14 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className="flex text-neutral-300">
+    <header className="flex text-text-primary">
       <nav className="flex w-full items-center justify-between">
         <div className="text-xl lg:text-2xl">MANAS</div>
 
         <ul className="hidden items-center gap-15 lg:flex">
           {headerLinks.map(({ label, href, icon }) => (
             <li key={label}>
-               <Link href={href} className="group flex lg:text-l font-semibold text-neutral-300 transition-colors duration-300 hover:text-white">
+               <Link href={href} className="group flex lg:text-md font-semibold text-text-primary transition-colors duration-300 hover:text-white">
                 <div className="flex items-center">
                   {label}
                    <div className="ml rotate-45 transition-transform duration-300 group-hover:rotate-90">
@@ -38,7 +38,7 @@ const Header = () => {
             </li>
           ))}
           <li className="flex items-center">
-            <button className="cursor-pointer rounded-md border  px-3 py-1 text-l font-semribold text-neutral-500 transition-colors duration-200 hover:border-neutral-300 hover:text-neutral-300">
+            <button className="cursor-pointer rounded-md border px-3 py-1 text-md font-semribold text-text-primary transition-colors duration-200 hover:border-text-secondary hover:text-text-secondary">
               CONTACT NOW
             </button>
           </li>

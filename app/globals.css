@@ -1,11 +1,84 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap");
 @import "tailwindcss";
 
-
-@theme {
+/* :root {
   --font-helvetica: "Helvetica", "Arial", sans-serif;
   --font-instrument: "Instrument Serif", serif;
-  --font-sans:serif, sans-serif;
+  --font-sans: serif, sans-serif;
+
+  --color-background: #0a0a0a;
+  --color-surface: #111111;
+  --color-border: #1a1a1a;
+  --color-border-hover: #2a2a2a;
+
+  --color-text-primary: #f0f0f0;
+  --color-text-secondary: #c8c8c8;
+  --color-text-muted: oklch(51.4% 0.222 16.935);
+  --color-text-dim: #2a2a2a;
+
+  --color-accent: #60a5fa;
+  --color-status-live: #3a7a3a;
+  --color-status-wip: #7a6a2a;
+} */
+@theme{
+  --font-helvetica: "Helvetica", "Arial", sans-serif;
+  --font-instrument: "Instrument Serif", serif;
+  --font-sans: serif, sans-serif;
+
+  --color-background: #0a0a0a;
+  --color-surface: #111111;
+  --color-border: #242424;
+  --color-border-hover: oklch(55.2% 0.016 285.938);
+
+  --color-text-primary: #f0f0f0;
+  --color-text-secondary: #c8c8c8;
+  --color-text-muted: #888888;
+  --color-text-dim: #555555;
+  --color-text-ghost: #333333;
+  --color-text-hover:oklch(55.2% 0.016 285.938);
+
+  --color-accent: #60a5fa;
+  --color-status-live: #3a7a3a;
+  --color-status-wip: #7a6a2a;
+}
+
+@layer components {
+  /* Button: vertical fill from bottom to top on hover */
+  .btn-fill-vertical {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    transition: color 0.25s ease, border-color 0.25s ease;
+    background: transparent;
+  }
+
+  .btn-fill-vertical::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    background: var(--color-accent);
+    transform: translateY(100%);
+    transition: transform 0.35s ease;
+    z-index: 0;
+  }
+
+  .btn-fill-vertical span {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+  }
+
+  .btn-fill-vertical:hover::before {
+    transform: translateY(0);
+  }
+
+  .btn-fill-vertical:hover {
+    color: var(--color-background);
+    border-color: var(--color-accent);
+  }
 }
 
 @layer base {

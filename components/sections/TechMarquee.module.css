@@ -4,8 +4,6 @@
 }
 
 .sectionHeader {
-  padding: 0 48px;
-  margin-bottom: 40px;
   display: flex;
   align-items: center;
   gap: 16px;

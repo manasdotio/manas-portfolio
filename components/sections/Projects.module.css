@@ -1,0 +1,363 @@
+.section {
+  margin-top: 80px;
+}
+
+.heading {
+  padding: 0 48px;
+  margin-bottom: 48px;
+}
+
+.headingEyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.headingLine {
+  width: 40px;
+  height: 1px;
+  background: var(--color-text-ghost);
+}
+
+.headingIndex {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-ghost);
+  font-variant: small-caps;
+  font-weight: 400;
+}
+
+.headingPrimary,
+.headingSecondary {
+  font-family: var(--font-instrument);
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 1;
+  margin: 0;
+}
+
+.headingPrimary {
+  color: var(--color-text-primary);
+}
+
+.headingSecondary {
+  color: var(--color-text-ghost);
+  font-style: italic;
+}
+
+.projectsList {
+  padding: 0 48px;
+}
+
+.projectRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  padding: 48px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.projectRow:last-child {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.projectRow:nth-child(even) .textColumn {
+  order: 2;
+}
+
+.projectRow:nth-child(even) .imageColumn {
+  order: 1;
+}
+
+.textColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.projectMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.projectIndexYear {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-ghost);
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+}
+
+.statusDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 9999px;
+}
+
+.statusLive {
+  background: rgba(74, 222, 128, 0.1);
+  color: #4ade80;
+  border-color: rgba(74, 222, 128, 0.2);
+}
+
+.statusLive .statusDot {
+  background: var(--color-status-live);
+}
+
+.statusProgress {
+  background: rgba(251, 191, 36, 0.1);
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.2);
+}
+
+.statusProgress .statusDot {
+  background: var(--color-status-wip);
+}
+
+.projectName {
+  font-family: var(--font-instrument);
+  font-size: 34px;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin: 0 0 14px;
+  transition: color 0.25s ease;
+}
+
+.projectRow:hover .projectName {
+  color: var(--color-text-primary);
+}
+
+.description {
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+  font-weight: 300;
+  margin: 0 0 24px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.tag {
+  font-size: 10px;
+  color: #888888;
+  background: #161616;
+  border: none;
+  padding: 5px 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.25s ease;
+}
+
+.tag:hover {
+  color: #a3a3a3;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.projectLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+  transition: color 0.25s ease;
+}
+
+.projectArrow {
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+.projectLink:hover {
+  color: var(--color-text-primary);
+}
+
+.projectLink:hover .projectArrow {
+  transform: translate(2px, -2px);
+}
+
+.imageColumn {
+  width: 100%;
+}
+
+.imageFrame {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  position: relative;
+  transition: border-color 0.25s ease;
+}
+
+.projectRow:hover .imageFrame {
+  border-color: var(--color-text-ghost);
+}
+
+.chromeBar {
+  height: 28px;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px;
+}
+
+.chromeDots {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.chromeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--color-border);
+  transition: background-color 0.25s ease;
+}
+
+.projectRow:hover .chromeDot:nth-child(1) {
+  background: #ef4444;
+}
+
+.projectRow:hover .chromeDot:nth-child(2) {
+  background: #f59e0b;
+}
+
+.projectRow:hover .chromeDot:nth-child(3) {
+  background: #22c55e;
+}
+
+.chromeUrl {
+  font-size: 10px;
+  color: var(--color-border);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.imageBody {
+  height: calc(100% - 28px);
+  overflow: hidden;
+}
+
+.projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 10, 0.5);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.projectRow:hover .imageOverlay {
+  opacity: 1;
+}
+
+.overlayCta {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-text-ghost);
+  padding: 8px 20px;
+}
+
+.bottomCta {
+  padding: 48px 48px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.moreText {
+  font-size: 13px;
+  color: var(--color-text-ghost);
+  margin-right: 8px;
+}
+
+.moreLink {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+  border-bottom: 1px solid var(--color-border);
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.moreLink:hover {
+  color: var(--color-text-muted);
+  border-color: var(--color-text-muted);
+}
+
+.countText {
+  font-size: 11px;
+  color: var(--color-border);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1024px) {
+  .heading,
+  .projectsList,
+  .bottomCta {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .imageColumn {
+    order: -1;
+  }
+  .projectRow {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .projectRow:nth-child(even) .textColumn,
+  .projectRow:nth-child(even) .imageColumn {
+    order: initial;
+  }
+
+  .headingPrimary,
+  .headingSecondary {
+    font-size: 42px;
+  }
+}
