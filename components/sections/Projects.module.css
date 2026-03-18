@@ -1,5 +1,5 @@
 .section {
-  margin-top: 80px;
+  margin-top: 100px;
 }
 
 .heading {
@@ -24,7 +24,7 @@
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-text-ghost);
+  color: #444444;
   font-variant: small-caps;
   font-weight: 400;
 }
@@ -43,7 +43,7 @@
 }
 
 .headingSecondary {
-  color: var(--color-text-ghost);
+  color: #444444;
   font-style: italic;
 }
 
@@ -87,7 +87,7 @@
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-text-ghost);
+  color: #444444;
 }
 
 .status {
@@ -259,7 +259,7 @@
 
 .chromeUrl {
   font-size: 10px;
-  color: var(--color-border);
+  color: #444444;
   letter-spacing: 0.04em;
   white-space: nowrap;
 }
@@ -309,7 +309,7 @@
 
 .moreText {
   font-size: 13px;
-  color: var(--color-text-ghost);
+  color: #444444;
   margin-right: 8px;
 }
 
@@ -331,7 +331,7 @@
 
 .countText {
   font-size: 11px;
-  color: var(--color-border);
+  color: #444444;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }

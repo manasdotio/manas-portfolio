@@ -1,0 +1,293 @@
+.section {
+  margin-top: 80px;
+  padding-bottom: 20px;
+}
+
+.heading {
+  padding: 0 48px;
+  margin-bottom: 64px;
+}
+
+.headingEyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.headingLine {
+  width: 40px;
+  height: 1px;
+  background: #333333;
+}
+
+.headingIndex {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #444444;
+}
+
+.headingPrimary,
+.headingSecondary {
+  font-family: var(--font-instrument);
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 1;
+  margin: 0;
+}
+
+.headingPrimary {
+  color: var(--color-text-primary);
+}
+
+.headingSecondary {
+  color: #444444;
+  font-style: italic;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  padding: 0 48px;
+  align-items: start;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.imageFrame {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.profileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nameText {
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  color: #888888;
+  letter-spacing: 0.06em;
+}
+
+.locationWrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.locationDot {
+  width: 4px;
+  height: 4px;
+  background: var(--color-status-live);
+  border-radius: 9999px;
+}
+
+.locationText {
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  color: #444444;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.intro {
+  font-family: var(--font-instrument);
+  font-size: 26px;
+  font-weight: 400;
+  color: #d0d0d0;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  margin: 0 0 32px;
+}
+
+.intro em {
+  font-style: italic;
+  color: #555555;
+}
+
+.bodyCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bodyCopy p {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--color-text-muted);
+  font-weight: 300;
+}
+
+.inlineLink {
+  color: #888888;
+  border-bottom: 1px solid #333333;
+  padding-bottom: 1px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.inlineLink:hover {
+  color: var(--color-text-primary);
+  border-color: #888888;
+}
+
+.divider {
+  height: 1px;
+  background: var(--color-border);
+  margin: 32px 0;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.statValue,
+.factNum {
+  font-family: var(--font-instrument);
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  line-height: 1;
+  margin: 0 0 4px;
+}
+
+.statLabel,
+.factLabel {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #666666;
+}
+
+.currentBlock {
+  margin-bottom: 32px;
+}
+
+.currentLabel {
+  margin: 0 0 16px;
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #444444;
+}
+
+.currentList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.currentItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.currentDot {
+  width: 3px;
+  height: 3px;
+  border-radius: 9999px;
+  background: #444444;
+}
+
+.ctaRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ctaPrimary,
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 12px 28px;
+  transition: all 0.2s;
+}
+
+.ctaPrimary {
+  color: #444444;
+  background: var(--color-text-primary);
+  border: none;
+}
+
+.ctaPrimary:hover {
+  background: #d0d0d0;
+}
+
+.ctaSecondary {
+  color: #555555;
+  background: transparent;
+  border: 1px solid #222222;
+}
+
+.ctaSecondary:hover {
+  border-color: #555555;
+  color: #aaaaaa;
+}
+
+@media (max-width: 1024px) {
+  .heading,
+  .contentGrid {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .headingPrimary,
+  .headingSecondary {
+    font-size: 42px;
+  }
+
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .imageFrame {
+    aspect-ratio: 1 / 1;
+  }
+}

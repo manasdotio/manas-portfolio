@@ -13,11 +13,11 @@ const Hero = () => {
           </div>
 
           <h1 className="mt-1 text-4xl font-medium tracking-tight text-text-primary font-sans lg:mt-5 lg:text-7xl">
-            Manas Singh.
+            Manas Singh
           </h1>
 
           <h2 className="mt-1 text-3xl font-medium text-text-secondary font-sans italic lg:mt-0 lg:text-6xl">
-            Frontend Developer
+            Fullstack Developer
           </h2>
 
           <p className="mt-3 max-w-full text-sm text-text-muted lg:mt-10 lg:max-w-3/4 lg:text-lg">
@@ -44,13 +44,13 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="avatarContainer lg:w-1/4 lg:self-start">
+        <div className="avatarContainer h-56 w-44 overflow-hidden lg:h-90 lg:w-70 lg:self-start lg:mt-10">
           <Image
             src="/assets/avatar.jpg"
             alt="Profile"
             width={280}
             height={360}
-            className="h-56 w-44 lg:h-90 lg:w-70 rounded-2xl border object-cover lg:mt-10"
+            className="block h-full w-full rounded-2xl border object-cover object-center"
           />
         </div>
       </div>
