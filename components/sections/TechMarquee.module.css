@@ -1,6 +1,5 @@
 .section {
-  margin-top: 64px;
-  overflow: hidden;
+  padding: 64px 0;
 }
 
 .sectionHeader {
@@ -12,116 +11,82 @@
 .stackGrid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
+  gap: 12px;
 }
 
 .stackCard {
-  background: #0f0f0f;
-  border: 1px solid #1e1e1e;
-  padding: 18px;
-  transition:
-    background-color 0.25s ease,
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  border-radius: 8px;
+  padding: 20px;
+  transition: all 0.3s ease;
 }
 
 .stackCard:hover {
-  background: #131313;
+  background: #0f0f0f;
+  transform: translateY(-2px);
 }
 
 .stackCard.frontend:hover {
-  border-color: rgba(196, 181, 253, 0.4);
-  box-shadow: 0 0 0 1px rgba(196, 181, 253, 0.4);
+  border-color: rgba(196, 181, 253, 0.35);
+  box-shadow: 0 4px 24px -4px rgba(196, 181, 253, 0.08);
 }
 
 .stackCard.backend:hover {
-  border-color: rgba(125, 211, 252, 0.4);
-  box-shadow: 0 0 0 1px rgba(125, 211, 252, 0.4);
+  border-color: rgba(125, 211, 252, 0.35);
+  box-shadow: 0 4px 24px -4px rgba(125, 211, 252, 0.08);
 }
 
 .stackCard.database:hover {
-  border-color: rgba(134, 239, 172, 0.4);
-  box-shadow: 0 0 0 1px rgba(134, 239, 172, 0.4);
+  border-color: rgba(134, 239, 172, 0.35);
+  box-shadow: 0 4px 24px -4px rgba(134, 239, 172, 0.08);
 }
 
 .stackCard.infra:hover {
-  border-color: rgba(252, 211, 77, 0.4);
-  box-shadow: 0 0 0 1px rgba(252, 211, 77, 0.4);
-}
-
-.categoryLabel {
-  margin: 0;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-weight: 600;
+  border-color: rgba(252, 211, 77, 0.35);
+  box-shadow: 0 4px 24px -4px rgba(252, 211, 77, 0.08);
 }
 
 .cardHead {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .categoryBadge {
-  width: 26px;
-  height: 26px;
-  border-radius: 7px;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border: 1px solid currentColor;
-  transition: background-color 0.25s ease;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
 }
 
-.categoryBadge.frontend {
-  background: rgba(196, 181, 253, 0.1);
+.stackCard:hover .categoryBadge {
+  opacity: 1;
 }
 
-.categoryBadge.backend {
-  background: rgba(125, 211, 252, 0.1);
+.categoryBadge.frontend { background: rgba(196, 181, 253, 0.08); }
+.categoryBadge.backend { background: rgba(125, 211, 252, 0.08); }
+.categoryBadge.database { background: rgba(134, 239, 172, 0.08); }
+.categoryBadge.infra { background: rgba(252, 211, 77, 0.08); }
+
+.categoryLabel {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
-.categoryBadge.database {
-  background: rgba(134, 239, 172, 0.1);
-}
-
-.categoryBadge.infra {
-  background: rgba(252, 211, 77, 0.1);
-}
-
-.stackCard.frontend:hover .categoryBadge.frontend {
-  background: rgba(196, 181, 253, 0.2);
-}
-
-.stackCard.backend:hover .categoryBadge.backend {
-  background: rgba(125, 211, 252, 0.2);
-}
-
-.stackCard.database:hover .categoryBadge.database {
-  background: rgba(134, 239, 172, 0.2);
-}
-
-.stackCard.infra:hover .categoryBadge.infra {
-  background: rgba(252, 211, 77, 0.2);
-}
-
-.frontend {
-  color: #c4b5fd;
-}
-
-.backend {
-  color: #7dd3fc;
-}
-
-.database {
-  color: #86efac;
-}
-
-.infra {
-  color: #fcd34d;
-}
+.frontend { color: #c4b5fd; }
+.backend { color: #7dd3fc; }
+.database { color: #86efac; }
+.infra { color: #fcd34d; }
 
 .itemList {
   list-style: none;
@@ -131,13 +96,6 @@
   gap: 10px;
 }
 
-.itemText {
-  font-size: 13px;
-  color: #808080;
-  line-height: 1.5;
-  transition: color 0.25s ease;
-}
-
 .itemRow {
   display: inline-flex;
   align-items: center;
@@ -145,35 +103,28 @@
 }
 
 .itemIcon {
-  color: #555555;
-  transition: color 0.25s ease;
+  color: #333333;
+  transition: color 0.3s ease;
 }
 
-.stackCard:hover .itemText {
-  color: #b3b3b3;
+.itemText {
+  font-size: 13px;
+  color: #606060;
+  line-height: 1.5;
+  transition: color 0.3s ease;
 }
 
-.stackCard.frontend:hover .itemIcon {
-  color: #c4b5fd;
-}
-
-.stackCard.backend:hover .itemIcon {
-  color: #7dd3fc;
-}
-
-.stackCard.database:hover .itemIcon {
-  color: #86efac;
-}
-
-.stackCard.infra:hover .itemIcon {
-  color: #fcd34d;
-}
+.stackCard:hover .itemText { color: #a0a0a0; }
+.stackCard.frontend:hover .itemIcon { color: #c4b5fd; }
+.stackCard.backend:hover .itemIcon { color: #7dd3fc; }
+.stackCard.database:hover .itemIcon { color: #86efac; }
+.stackCard.infra:hover .itemIcon { color: #fcd34d; }
 
 .marqueeStrip {
-  margin-top: 14px;
+  margin-top: 16px;
   position: relative;
   overflow: hidden;
-  --edge-fade: 80px;
+  --edge-fade: 100px;
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0,
@@ -192,9 +143,9 @@
 
 .marqueeTrack {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   width: max-content;
-  animation: scroll 45s linear infinite;
+  animation: scroll 50s linear infinite;
 }
 
 .marqueeStrip:hover .marqueeTrack {
@@ -205,48 +156,46 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 14px;
-  border: 1px solid #222222;
-  background: #0d0d0d;
+  padding: 10px 16px;
+  border: 1px solid #1a1a1a;
+  border-radius: 6px;
+  background: #080808;
   white-space: nowrap;
+  transition: border-color 0.2s ease;
 }
 
-/* .marqueeDot removed: color dots no longer used in marquee */
+.marqueeItem:hover {
+  border-color: #2a2a2a;
+}
 
 .marqueeIcon {
-  color: var(--color-text-ghost);
+  color: #404040;
   transition: color 0.2s ease;
 }
 
 .marqueeName {
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 0.08em;
-  color: #a1a1a1;
+  color: #707070;
   text-transform: uppercase;
 }
 
-.marqueeItem:hover .marqueeIcon {
-  color: #888888;
-}
+.marqueeItem:hover .marqueeIcon { color: #707070; }
 
 @keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
 
-  100% {
-    transform: translateX(-50%);
+@media (max-width: 1024px) {
+  .stackGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .section {
-    margin-top: 40px;
-  }
-
-  .sectionHeader {
-    padding: 0 24px;
-    margin-bottom: 24px;
+    padding: 40px 0;
   }
 
   .stackGrid {

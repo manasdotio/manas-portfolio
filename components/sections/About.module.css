@@ -1,11 +1,9 @@
 .section {
-  margin-top: 80px;
-  padding-bottom: 20px;
+  padding: 80px 0;
 }
 
 .heading {
-  padding: 0;
-  margin-bottom: 64px;
+  margin-bottom: 56px;
 }
 
 .headingEyebrow {
@@ -16,56 +14,57 @@
 }
 
 .headingLine {
-  width: 40px;
+  width: 32px;
   height: 1px;
-  background: #333333;
+  background: #2a2a2a;
 }
 
 .headingIndex {
   font-size: 11px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #666666;
+  color: #404040;
 }
 
 .headingPrimary,
 .headingSecondary {
   font-family: var(--font-instrument);
-  font-size: 56px;
+  font-size: 48px;
   font-weight: 500;
   line-height: 1;
   margin: 0;
 }
 
-.headingPrimary {
-  color: var(--color-text-primary);
-}
-
-.headingSecondary {
-  color: #3d3d3d;
-  font-style: italic;
-}
+.headingPrimary { color: var(--color-text-primary); }
+.headingSecondary { color: #2a2a2a; font-style: italic; }
 
 .contentGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  padding: 0 48px;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 64px;
   align-items: start;
 }
 
 .leftColumn {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
+  position: sticky;
+  top: 40px;
 }
 
 .imageFrame {
   width: 100%;
   aspect-ratio: 3 / 4;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  border-radius: 8px;
   overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.imageFrame:hover {
+  border-color: #2a2a2a;
 }
 
 .profileImage {
@@ -79,32 +78,32 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 4px;
 }
 
 .nameText {
-  font-family: Inter, sans-serif;
   font-size: 12px;
-  color: #888888;
-  letter-spacing: 0.06em;
+  color: #707070;
+  letter-spacing: 0.04em;
 }
 
 .locationWrap {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
 }
 
 .locationDot {
-  width: 4px;
-  height: 4px;
-  background: var(--color-status-live);
+  width: 5px;
+  height: 5px;
+  background: #4ade80;
   border-radius: 9999px;
+  box-shadow: 0 0 6px rgba(74, 222, 128, 0.4);
 }
 
 .locationText {
-  font-family: Inter, sans-serif;
   font-size: 11px;
-  color: #555555;
+  color: #505050;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -116,17 +115,17 @@
 
 .intro {
   font-family: var(--font-instrument);
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 500;
-  color: #d0d0d0;
-  line-height: 1.4;
+  color: #c0c0c0;
+  line-height: 1.45;
   letter-spacing: -0.01em;
-  margin: 0 0 32px;
+  margin: 0 0 28px;
 }
 
 .intro em {
   font-style: italic;
-  color: #555555;
+  color: #404040;
 }
 
 .bodyCopy {
@@ -137,75 +136,77 @@
 
 .bodyCopy p {
   margin: 0;
-  font-family: Inter, sans-serif;
   font-size: 14px;
   line-height: 1.9;
-  color: #888888;
+  color: #707070;
   font-weight: 300;
 }
 
 .inlineLink {
-  color: #888888;
-  border-bottom: 1px solid #333333;
+  color: #a0a0a0;
+  border-bottom: 1px solid #2a2a2a;
   padding-bottom: 1px;
-  text-decoration: none;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
 
 .inlineLink:hover {
-  color: var(--color-text-primary);
-  border-color: #888888;
+  color: #f5f5f5;
+  border-color: #707070;
 }
 
 .divider {
   height: 1px;
-  background: var(--color-border);
-  margin: 32px 0;
+  background: #1a1a1a;
+  margin: 28px 0;
 }
 
 .statsGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  margin-bottom: 40px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
 .statItem {
   display: flex;
   flex-direction: column;
+  padding: 16px;
+  background: #080808;
+  border: 1px solid #1a1a1a;
+  border-radius: 6px;
+  transition: border-color 0.2s ease;
 }
 
-.statValue,
-.factNum {
+.statItem:hover {
+  border-color: #2a2a2a;
+}
+
+.statValue {
   font-family: var(--font-instrument);
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 400;
   color: var(--color-text-primary);
   line-height: 1;
-  margin: 0 0 4px;
+  margin: 0 0 6px;
 }
 
-.statLabel,
-.factLabel {
+.statLabel {
   margin: 0;
-  font-family: Inter, sans-serif;
   font-size: 11px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #666666;
+  color: #505050;
 }
 
 .currentBlock {
-  margin-bottom: 32px;
+  margin-top: 4px;
 }
 
 .currentLabel {
-  margin: 0 0 16px;
-  font-family: Inter, sans-serif;
+  margin: 0 0 14px;
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #666666;
+  color: #505050;
 }
 
 .currentList {
@@ -218,22 +219,27 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  font-family: Inter, sans-serif;
   font-size: 13px;
-  color: #666666;
+  color: #606060;
+  transition: color 0.2s ease;
+}
+
+.currentItem:hover {
+  color: #a0a0a0;
 }
 
 .currentDot {
-  width: 3px;
-  height: 3px;
+  width: 4px;
+  height: 4px;
   border-radius: 9999px;
-  background: #444444;
+  background: #2a2a2a;
 }
 
 .ctaRow {
+  margin-top: 28px;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 .ctaPrimary,
@@ -241,53 +247,72 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: Inter, sans-serif;
   font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 12px 28px;
-  transition: all 0.2s;
+  border-radius: 4px;
+  transition: all 0.2s ease;
 }
 
 .ctaPrimary {
-  color: #555555;
-  background: var(--color-text-primary);
-  border: none;
+  color: #050505;
+  background: #f5f5f5;
+  border: 1px solid #f5f5f5;
 }
 
 .ctaPrimary:hover {
   background: #d0d0d0;
+  border-color: #d0d0d0;
+  transform: translateY(-1px);
 }
 
 .ctaSecondary {
-  color: #555555;
+  color: #707070;
   background: transparent;
-  border: 1px solid #222222;
+  border: 1px solid #1a1a1a;
 }
 
 .ctaSecondary:hover {
-  border-color: #555555;
-  color: #aaaaaa;
+  border-color: #404040;
+  color: #a0a0a0;
 }
 
 @media (max-width: 1024px) {
-  .heading,
   .contentGrid {
-    padding-left: 24px;
-    padding-right: 24px;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .leftColumn {
+    position: static;
+    max-width: 320px;
+  }
+
+  .imageFrame {
+    aspect-ratio: 1 / 1;
   }
 
   .headingPrimary,
   .headingSecondary {
     font-size: 42px;
   }
+}
 
-  .contentGrid {
-    grid-template-columns: 1fr;
-    gap: 40px;
+@media (max-width: 640px) {
+  .section { padding: 48px 0; }
+
+  .headingPrimary,
+  .headingSecondary {
+    font-size: 36px;
   }
 
-  .imageFrame {
-    aspect-ratio: 1 / 1;
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .ctaRow {
+    flex-direction: column;
+    align-items: stretch;
   }
 }

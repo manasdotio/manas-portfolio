@@ -1,17 +1,14 @@
-import React from "react";
+import type { ReactNode } from "react";
 
-const Background: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div className="min-h-screen w-full relative">
-    {/* Crimson Depth */}
-    <div
-      className="absolute inset-0 z-0"
-      style={{
-        background: "radial-gradient(125% 125% at 50% 100%, #000000 40%, #0a0a0a 100%)",
-      }}
-    />
-    <div className="relative z-10">
-      {children}
+const Background = ({ children }: { children: ReactNode }) => (
+  <div className="relative min-h-screen w-full bg-[#050505]">
+    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
+      <div className="bg-grid" />
+      <div className="aurora aurora-1" />
+      <div className="aurora aurora-2" />
+      <div className="grain" />
     </div>
+    <div className="relative z-10">{children}</div>
   </div>
 );
 

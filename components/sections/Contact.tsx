@@ -8,7 +8,7 @@ const SOCIAL_ROW_LINKS = SOCIAL_LINKS.filter((item) => item.platform !== "Email"
 
 const Contact = () => {
   return (
-    <section className={styles.section} aria-label="Contact">
+    <section className={styles.section} aria-label="Contact" id="contact">
       <div className={styles.heading}>
         <div className={styles.headingEyebrow}>
           <span className={styles.headingLine} />

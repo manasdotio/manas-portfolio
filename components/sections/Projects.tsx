@@ -73,7 +73,7 @@ const getTagTone = (tag: string) => {
 
 const Projects = () => {
   return (
-    <section className={styles.section} aria-label="Selected work">
+    <section className={styles.section} aria-label="Selected work" id="projects">
       <div className={styles.heading}>
         <div className={styles.headingEyebrow}>
           <span className={styles.headingLine} />
