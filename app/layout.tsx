@@ -47,8 +47,10 @@ type RootLayoutProps = {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" className={instrumentSerif.variable}>
-      <body className="min-h-screen bg-black text-white antialiased">{children}</body>
+    <html lang="en" className={instrumentSerif.variable} suppressHydrationWarning>
+      <body className="min-h-screen bg-black text-white antialiased" suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }
