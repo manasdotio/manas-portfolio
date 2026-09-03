@@ -16,7 +16,7 @@ export const SOCIAL_LINKS = [
   },
   {
     platform: "Email",
-    handle: "manas@example.com",
-    href: "mailto:manas@example.com",
+    handle: "manasdotio@gmail.com",
+    href: "mailto:manasdotio@gmail.com",
   },
 ];

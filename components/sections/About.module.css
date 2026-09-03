@@ -1,37 +1,45 @@
 .section {
-  margin-top: 80px;
+  margin-top: 48px;
   padding-bottom: 20px;
 }
 
+/* ── Heading ── */
 .heading {
   padding: 0;
-  margin-bottom: 64px;
+  margin-bottom: 32px;
 }
 
 .headingEyebrow {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .headingLine {
   width: 40px;
   height: 1px;
-  background: #333333;
+  background: #555555;
 }
 
 .headingIndex {
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #666666;
+  color: #a3a3a3;
+  font-weight: 600;
+}
+
+.headingRow {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
 }
 
 .headingPrimary,
 .headingSecondary {
   font-family: var(--font-instrument);
-  font-size: 56px;
+  font-size: 48px;
   font-weight: 500;
   line-height: 1;
   margin: 0;
@@ -42,170 +50,214 @@
 }
 
 .headingSecondary {
-  color: #3d3d3d;
+  color: #555555;
   font-style: italic;
 }
 
+/* ── Content Grid ── */
 .contentGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  padding: 0 48px;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 48px;
+  padding: 0;
   align-items: start;
 }
 
 .leftColumn {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 28px;
 }
 
-.imageFrame {
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  overflow: hidden;
-}
-
-.profileImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.metaRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.nameText {
-  font-family: Inter, sans-serif;
-  font-size: 12px;
-  color: #888888;
-  letter-spacing: 0.06em;
-}
-
-.locationWrap {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.locationDot {
-  width: 4px;
-  height: 4px;
-  background: var(--color-status-live);
-  border-radius: 9999px;
-}
-
-.locationText {
-  font-family: Inter, sans-serif;
-  font-size: 11px;
-  color: #555555;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.rightColumn {
-  display: flex;
-  flex-direction: column;
+.introBox {
+  border-left: 2px solid #3b82f6;
+  padding-left: 16px;
 }
 
 .intro {
   font-family: var(--font-instrument);
-  font-size: 26px;
+  font-size: 23px;
   font-weight: 500;
-  color: #d0d0d0;
+  color: #e5e7eb;
   line-height: 1.4;
   letter-spacing: -0.01em;
-  margin: 0 0 32px;
+  margin: 0;
 }
 
 .intro em {
   font-style: italic;
-  color: #555555;
+  color: #93c5fd;
+}
+
+/* ── Connected Timeline Pipeline (Latest First) ── */
+.timelineContainer {
+  position: relative;
+  padding-left: 20px;
+}
+
+.timelineLineTrack {
+  position: absolute;
+  left: 6px;
+  top: 12px;
+  bottom: 24px;
+  width: 2px;
+  background: linear-gradient(to bottom, #3b82f6 0%, #2563eb 40%, #1e2433 100%);
+}
+
+.timelineList {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.timelineItem {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.timelineMarker {
+  position: absolute;
+  left: -20px;
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #07080b;
+}
+
+.timelineDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #4b5563;
+  transition: all 0.2s ease;
+}
+
+.timelineDotActive {
+  background: #3b82f6;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
+  width: 9px;
+  height: 9px;
+}
+
+.timelineContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.timelineYearBadge {
+  font-family: Inter, -apple-system, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #9ca3af;
+  background: #161922;
+  border: 1px solid #282d3d;
+  padding: 1px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+
+.timelineYearBadgeActive {
+  color: #60a5fa;
+  background: rgba(59, 130, 246, 0.12);
+  border-color: rgba(59, 130, 246, 0.35);
+}
+
+.timelineTitle {
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #f3f4f6;
+  margin: 0;
+}
+
+.timelineDesc {
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  color: #9ca3af;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Metrics Grid ── */
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  padding-top: 8px;
+  border-top: 1px solid #1f2433;
+}
+
+.metricCard {
+  background: #0e1118;
+  border: 1px solid #202636;
+  border-radius: 6px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.metricValue {
+  font-family: var(--font-instrument);
+  font-size: 32px;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1;
+  margin: 0 0 4px;
+}
+
+.metricLabel {
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #888888;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ── Right Column ── */
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
 }
 
 .bodyCopy {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .bodyCopy p {
   margin: 0;
   font-family: Inter, sans-serif;
   font-size: 14px;
-  line-height: 1.9;
-  color: #888888;
+  line-height: 1.8;
+  color: #a3a3a3;
   font-weight: 300;
 }
 
-.inlineLink {
-  color: #888888;
-  border-bottom: 1px solid #333333;
-  padding-bottom: 1px;
-  text-decoration: none;
-  transition: all 0.2s;
-}
-
-.inlineLink:hover {
-  color: var(--color-text-primary);
-  border-color: #888888;
-}
-
-.divider {
-  height: 1px;
-  background: var(--color-border);
-  margin: 32px 0;
-}
-
-.statsGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  margin-bottom: 40px;
-}
-
-.statItem {
-  display: flex;
-  flex-direction: column;
-}
-
-.statValue,
-.factNum {
-  font-family: var(--font-instrument);
-  font-size: 36px;
-  font-weight: 400;
-  color: var(--color-text-primary);
-  line-height: 1;
-  margin: 0 0 4px;
-}
-
-.statLabel,
-.factLabel {
-  margin: 0;
-  font-family: Inter, sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #666666;
-}
-
-.currentBlock {
-  margin-bottom: 32px;
-}
-
-.currentLabel {
-  margin: 0 0 16px;
+.subHeadingLabel {
+  margin: 0 0 12px;
   font-family: Inter, sans-serif;
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #666666;
+  color: #a3a3a3;
+  font-weight: 600;
+}
+
+/* ── Currently Block ── */
+.currentBlock {
+  background: #0d0f15;
+  border: 1px solid #1e2332;
+  border-radius: 6px;
+  padding: 16px 18px;
 }
 
 .currentList {
@@ -217,23 +269,26 @@
 .currentItem {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   font-family: Inter, sans-serif;
-  font-size: 13px;
-  color: #666666;
+  font-size: 12px;
+  color: #a3a3a3;
 }
 
 .currentDot {
-  width: 3px;
-  height: 3px;
+  width: 4px;
+  height: 4px;
   border-radius: 9999px;
-  background: #444444;
+  background: #3b82f6;
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.7);
+  flex-shrink: 0;
 }
 
+/* ── CTAs ── */
 .ctaRow {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
 }
 
 .ctaPrimary,
@@ -245,49 +300,44 @@
   font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 12px 28px;
-  transition: all 0.2s;
+  padding: 11px 22px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
 }
 
 .ctaPrimary {
-  color: #555555;
-  background: var(--color-text-primary);
-  border: none;
+  color: #ffffff;
+  background: #2563eb;
+  border: 1px solid #3b82f6;
+  box-shadow: 0 0 16px rgba(37, 99, 235, 0.25);
 }
 
 .ctaPrimary:hover {
-  background: #d0d0d0;
+  background: #1d4ed8;
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
 }
 
 .ctaSecondary {
-  color: #555555;
-  background: transparent;
-  border: 1px solid #222222;
+  color: #d1d5db;
+  background: #11141d;
+  border: 1px solid #262d3e;
 }
 
 .ctaSecondary:hover {
-  border-color: #555555;
-  color: #aaaaaa;
+  border-color: #3b455e;
+  color: #ffffff;
 }
 
 @media (max-width: 1024px) {
-  .heading,
-  .contentGrid {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-
   .headingPrimary,
   .headingSecondary {
-    font-size: 42px;
+    font-size: 36px;
   }
 
   .contentGrid {
     grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .imageFrame {
-    aspect-ratio: 1 / 1;
+    gap: 36px;
   }
 }

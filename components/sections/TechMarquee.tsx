@@ -1,5 +1,7 @@
+"use client";
+
 import styles from "./TechMarquee.module.css";
-import type { IconType } from "react-icons";
+import type { IconType } from "../ui/techIcons";
 import {
   SiDocker,
   SiExpress,
@@ -18,134 +20,169 @@ import {
   SiTrpc,
   SiTypescript,
   SiVercel,
-} from "react-icons/si";
+  SiFirefoxbrowser,
+  SiVite,
+} from "../ui/techIcons";
+import { useTechFilter } from "../ui/stackFilter";
+import { PORTFOLIO_DATA, SkillCategory } from "../../data/portfolio";
 
-type StackCategory = "frontend" | "backend" | "database" | "infra";
-
-type StackItem = {
-  category: StackCategory;
-  label: string;
-  badgeIcon: IconType;
-  items: Array<{
-    name: string;
-    icon: IconType;
-  }>;
+const ICON_MAP: Record<string, IconType> = {
+  React: SiReact,
+  "Next.js": SiNextdotjs,
+  TypeScript: SiTypescript,
+  "Tailwind CSS": SiTailwindcss,
+  "Framer Motion": SiFramer,
+  Vite: SiVite,
+  "Node.js": SiNodedotjs,
+  Express: SiExpress,
+  "REST APIs": SiNodedotjs,
+  GraphQL: SiGraphql,
+  tRPC: SiTrpc,
+  PostgreSQL: SiPostgresql,
+  Redis: SiRedis,
+  Prisma: SiPrisma,
+  MongoDB: SiMongodb,
+  "Browser Extension": SiFirefoxbrowser,
+  Docker: SiDocker,
+  Vercel: SiVercel,
+  Git: SiGit,
+  Linux: SiLinux,
 };
 
-const stackGroups: StackItem[] = [
-  {
-    category: "frontend",
-    label: "Frontend",
-    badgeIcon: SiReact,
-    items: [
-      { name: "React", icon: SiReact },
-      { name: "Next.js", icon: SiNextdotjs },
-      { name: "TypeScript", icon: SiTypescript },
-      { name: "Tailwind CSS", icon: SiTailwindcss },
-      { name: "Framer Motion", icon: SiFramer },
-    ],
-  },
-  {
-    category: "backend",
-    label: "Backend",
-    badgeIcon: SiNodedotjs,
-    items: [
-      { name: "Node.js", icon: SiNodedotjs },
-      { name: "Express", icon: SiExpress },
-      { name: "GraphQL", icon: SiGraphql },
-      { name: "tRPC", icon: SiTrpc },
-    ],
-  },
-  {
-    category: "database",
-    label: "Database",
-    badgeIcon: SiPostgresql,
-    items: [
-      { name: "PostgreSQL", icon: SiPostgresql },
-      { name: "Redis", icon: SiRedis },
-      { name: "Prisma", icon: SiPrisma },
-      { name: "MongoDB", icon: SiMongodb },
-    ],
-  },
-  {
-    category: "infra",
-    label: "Infra",
-    badgeIcon: SiDocker,
-    items: [
-      { name: "Docker", icon: SiDocker },
-      { name: "Vercel", icon: SiVercel },
-      { name: "Git", icon: SiGit },
-      { name: "Linux", icon: SiLinux },
-    ],
-  },
-];
+const CATEGORY_META: Record<
+  SkillCategory,
+  { label: string; badgeIcon: IconType }
+> = {
+  frontend: { label: "Frontend & UI", badgeIcon: SiReact },
+  backend: { label: "Backend & APIs", badgeIcon: SiNodedotjs },
+  database: { label: "Databases & ORM", badgeIcon: SiPostgresql },
+  infra: { label: "Tools & Extensions", badgeIcon: SiDocker },
+};
 
-const getCategoryClass = (category: StackCategory) => {
+const CATEGORIES: SkillCategory[] = ["frontend", "backend", "database", "infra"];
+
+const getCategoryClass = (category: SkillCategory) => {
   if (category === "frontend") return styles.frontend;
   if (category === "backend") return styles.backend;
   if (category === "database") return styles.database;
   return styles.infra;
 };
 
-const marqueeItems = stackGroups.flatMap((group) =>
-  group.items.map((item) => ({ ...item, category: group.category }))
-);
-
-const repeatedMarquee = Array.from({ length: 4 }, () => marqueeItems).flat();
-
 const TechMarquee = () => {
+  const { selectedTech, setTechFilter } = useTechFilter();
+
+  // Dynamically group skills enabled in data/portfolio.ts
+  const enabledSkills = PORTFOLIO_DATA.skills.filter((s) => s.enabled);
+
+  const stackGroups = CATEGORIES.map((cat) => {
+    const meta = CATEGORY_META[cat];
+    const items = enabledSkills
+      .filter((s) => s.category === cat)
+      .map((s) => ({
+        name: s.name,
+        icon: ICON_MAP[s.name] ?? SiReact,
+      }));
+
+    return {
+      category: cat,
+      label: meta.label,
+      badgeIcon: meta.badgeIcon,
+      items,
+    };
+  }).filter((group) => group.items.length > 0);
+
   return (
-    <section className={styles.section} aria-label="Technology stack">
+    <section id="stack" className={styles.section} aria-label="Technology stack">
       <div className={styles.sectionHeader}>
-        <div className="mb-12 mt-8">
-          <div className="mb-4 flex items-center gap-3 uppercase text-[11px] font-normal tracking-[0.18em] text-text-ghost [font-variant:small-caps]">
-            <span className="h-px w-12 bg-[#222222]" />
-            <span>01</span>
+        <div className="mb-4 mt-4 w-full">
+          <div className="mb-2 flex items-center justify-between">
+            <div className="flex items-center gap-3 uppercase text-[11px] font-medium tracking-[0.18em] text-[#888888] [font-variant:small-caps]">
+              <span className="h-px w-12 bg-[#33394d]" />
+              <span>01</span>
+            </div>
+
+            {selectedTech && (
+              <button
+                onClick={() => setTechFilter(null)}
+                className="inline-flex items-center gap-1.5 rounded-full border border-blue-500/40 bg-blue-500/10 px-2.5 py-0.5 text-[11px] font-mono text-blue-400 hover:bg-blue-500/20 cursor-pointer"
+              >
+                <span>Filtered: {selectedTech}</span>
+                <span className="text-xs">✕ Clear</span>
+              </button>
+            )}
           </div>
-          <h3 className="font-instrument text-[56px] font-medium leading-none text-text-primary">
-            My
-          </h3>
-          <p className="font-instrument text-[56px] font-medium leading-none italic text-[#3d3d3d]">
-            stack.
-          </p>
+
+          <div className="flex items-baseline justify-between flex-wrap gap-2">
+            <div className="flex items-baseline gap-3">
+              <h3 className="font-instrument text-[48px] font-medium leading-none text-text-primary">
+                My
+              </h3>
+              <p className="font-instrument text-[48px] font-medium leading-none italic text-[#666666]">
+                stack.
+              </p>
+            </div>
+            <p className="font-mono text-xs text-[#6b7280]">
+              Click any skill to filter matching projects ↗
+            </p>
+          </div>
         </div>
       </div>
 
+      {/* Balanced 2x2 Bento Grid with Horizontal Interactive Badges */}
       <div className={styles.stackGrid}>
         {stackGroups.map((group) => {
           const BadgeIcon = group.badgeIcon;
 
           return (
-            <article className={`${styles.stackCard} ${getCategoryClass(group.category)}`} key={group.label}>
+            <article
+              className={`${styles.stackCard} ${getCategoryClass(group.category)}`}
+              key={group.label}
+            >
               <div className={styles.cardHead}>
-                <span className={`${styles.categoryBadge} ${getCategoryClass(group.category)}`}>
-                  <BadgeIcon size={14} />
+                <div className="flex items-center gap-2.5">
+                  <span className={`${styles.categoryBadge} ${getCategoryClass(group.category)}`}>
+                    <BadgeIcon size={14} />
+                  </span>
+                  <h4 className={`${styles.categoryLabel} ${getCategoryClass(group.category)}`}>
+                    {group.label}
+                  </h4>
+                </div>
+                <span className={styles.itemCountBadge}>
+                  {group.items.length} tools
                 </span>
-                <p className={`${styles.categoryLabel} ${getCategoryClass(group.category)}`}>{group.label}</p>
               </div>
 
-              <ul className={styles.itemList}>
-                {group.items.map((item) => (
-                  <li className={styles.itemRow} key={item.name}>
-                    <item.icon className={styles.itemIcon} size={14} />
-                    <span className={styles.itemText}>{item.name}</span>
-                  </li>
-                ))}
-              </ul>
+              {/* Horizontal cluster of tactile interactive pills */}
+              <div className={styles.pillsWrap}>
+                {group.items.map((item) => {
+                  const isSelected = selectedTech === item.name;
+
+                  return (
+                    <button
+                      key={item.name}
+                      onClick={() => setTechFilter(isSelected ? null : item.name)}
+                      className={`${styles.techPill} ${
+                        isSelected ? styles.techPillActive : ""
+                      }`}
+                      title={`Filter projects using ${item.name}`}
+                    >
+                      <item.icon
+                        className={`${styles.pillIcon} ${
+                          isSelected ? styles.pillIconActive : ""
+                        }`}
+                        size={14}
+                      />
+                      <span className={styles.pillText}>{item.name}</span>
+                      {isSelected && (
+                        <span className={styles.pillDot}>●</span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
             </article>
           );
         })}
-      </div>
-
-      <div className={styles.marqueeStrip} aria-hidden="true">
-        <div className={styles.marqueeTrack}>
-          {repeatedMarquee.map((item, index) => (
-            <span className={styles.marqueeItem} key={`${item.name}-${index}`}>
-              <item.icon className={styles.marqueeIcon} size={14} />
-              <span className={styles.marqueeName}>{item.name}</span>
-            </span>
-          ))}
-        </div>
       </div>
     </section>
   );

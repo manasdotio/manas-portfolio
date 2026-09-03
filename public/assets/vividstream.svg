@@ -1,0 +1,105 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <rect width="1280" height="720" fill="#0D0E12"/>
+  <radialGradient id="glow" cx="50%" cy="30%" r="60%">
+    <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.15"/>
+    <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+  </radialGradient>
+  <rect width="1280" height="720" fill="url(#glow)"/>
+
+  <!-- Top App Navigation -->
+  <rect x="40" y="40" width="1200" height="56" rx="10" fill="#14161E" stroke="#232736" stroke-width="1.5"/>
+  <circle cx="70" cy="68" r="6" fill="#EF4444"/>
+  <circle cx="90" cy="68" r="6" fill="#F59E0B"/>
+  <circle cx="110" cy="68" r="6" fill="#10B981"/>
+  
+  <!-- Logo -->
+  <rect x="140" y="56" width="24" height="24" rx="6" fill="#3B82F6"/>
+  <polygon points="149,63 157,68 149,73" fill="#FFFFFF"/>
+  <text x="174" y="72" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="700" letter-spacing="0.5">VividStream</text>
+
+  <!-- Search Bar -->
+  <rect x="460" y="52" width="360" height="32" rx="6" fill="#1C1F2B" stroke="#2D3346" stroke-width="1"/>
+  <text x="480" y="72" fill="#6B7280" font-family="system-ui, sans-serif" font-size="13">Search videos, creators, playlists...</text>
+
+  <!-- User Avatar / Controls -->
+  <rect x="1150" y="54" width="28" height="28" rx="14" fill="#3B82F6" fill-opacity="0.2" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="1159" y="72" fill="#60A5FA" font-family="system-ui, sans-serif" font-size="12" font-weight="700">M</text>
+
+  <!-- Main Video Player Canvas -->
+  <g>
+    <rect x="40" y="120" width="820" height="460" rx="12" fill="#141722" stroke="#252A3D" stroke-width="1.5"/>
+    
+    <!-- Player visual elements -->
+    <rect x="40" y="120" width="820" height="460" rx="12" fill="url(#videoGrad)"/>
+    <defs>
+      <linearGradient id="videoGrad" x1="40" y1="120" x2="860" y2="580" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#1E2235"/>
+        <stop offset="50%" stop-color="#11131C"/>
+        <stop offset="100%" stop-color="#0A0B10"/>
+      </linearGradient>
+    </defs>
+
+    <!-- Center Play Button -->
+    <circle cx="450" cy="330" r="44" fill="#3B82F6" fill-opacity="0.9"/>
+    <polygon points="443,314 465,330 443,346" fill="#FFFFFF"/>
+
+    <!-- Player Bottom Scrubber Bar -->
+    <rect x="64" y="540" width="772" height="6" rx="3" fill="#2E344A"/>
+    <rect x="64" y="540" width="380" height="6" rx="3" fill="#3B82F6"/>
+    <circle cx="444" cy="543" r="7" fill="#FFFFFF"/>
+    <text x="64" y="525" fill="#E5E7EB" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Building Scalable Feed Aggregations with MongoDB &amp; Node.js</text>
+    <text x="770" y="525" fill="#9CA3AF" font-family="system-ui, sans-serif" font-size="12">14:32 / 28:50</text>
+  </g>
+
+  <!-- Video Meta Below Player -->
+  <rect x="40" y="600" width="820" height="80" rx="10" fill="#14161E" stroke="#232736" stroke-width="1"/>
+  <circle cx="75" cy="640" r="20" fill="#2563EB"/>
+  <text x="70" y="645" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="14" font-weight="700">V</text>
+  <text x="110" y="635" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="15" font-weight="600">Fullstack MERN Architecture</text>
+  <text x="110" y="654" fill="#9CA3AF" font-family="system-ui, sans-serif" font-size="12">JWT Token Rotation • Cloudinary Media • Mongoose Aggregate Paginate</text>
+  <rect x="740" y="624" width="100" height="32" rx="6" fill="#3B82F6"/>
+  <text x="758" y="645" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Subscribe</text>
+
+  <!-- Right Sidebar - Recommended Videos -->
+  <g>
+    <rect x="880" y="120" width="360" height="560" rx="12" fill="#14161E" stroke="#232736" stroke-width="1.5"/>
+    <text x="904" y="156" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="15" font-weight="700">Up Next</text>
+
+    <!-- Side Card 1 -->
+    <g transform="translate(900, 180)">
+      <rect width="130" height="80" rx="6" fill="#1E2335"/>
+      <polygon points="60,35 75,43 60,51" fill="#60A5FA"/>
+      <text x="145" y="24" fill="#E5E7EB" font-family="system-ui, sans-serif" font-size="13" font-weight="600">Express 5 Auth Flow</text>
+      <text x="145" y="42" fill="#9CA3AF" font-family="system-ui, sans-serif" font-size="11">HttpOnly Cookie Setup</text>
+      <text x="145" y="60" fill="#6B7280" font-family="system-ui, sans-serif" font-size="11">12K views • 2 days ago</text>
+    </g>
+
+    <!-- Side Card 2 -->
+    <g transform="translate(900, 280)">
+      <rect width="130" height="80" rx="6" fill="#1E2335"/>
+      <polygon points="60,35 75,43 60,51" fill="#60A5FA"/>
+      <text x="145" y="24" fill="#E5E7EB" font-family="system-ui, sans-serif" font-size="13" font-weight="600">Cloudinary Uploads</text>
+      <text x="145" y="42" fill="#9CA3AF" font-family="system-ui, sans-serif" font-size="11">Direct Stream Pipelines</text>
+      <text x="145" y="60" fill="#6B7280" font-family="system-ui, sans-serif" font-size="11">8.4K views • 1 week ago</text>
+    </g>
+
+    <!-- Side Card 3 -->
+    <g transform="translate(900, 380)">
+      <rect width="130" height="80" rx="6" fill="#1E2335"/>
+      <polygon points="60,35 75,43 60,51" fill="#60A5FA"/>
+      <text x="145" y="24" fill="#E5E7EB" font-family="system-ui, sans-serif" font-size="13" font-weight="600">Video Recommendation</text>
+      <text x="145" y="42" fill="#9CA3AF" font-family="system-ui, sans-serif" font-size="11">MongoDB Aggregation</text>
+      <text x="145" y="60" fill="#6B7280" font-family="system-ui, sans-serif" font-size="11">19K views • 2 weeks ago</text>
+    </g>
+
+    <!-- Side Card 4 -->
+    <g transform="translate(900, 480)">
+      <rect width="130" height="80" rx="6" fill="#1E2335"/>
+      <polygon points="60,35 75,43 60,51" fill="#60A5FA"/>
+      <text x="145" y="24" fill="#E5E7EB" font-family="system-ui, sans-serif" font-size="13" font-weight="600">Creator Analytics</text>
+      <text x="145" y="42" fill="#9CA3AF" font-family="system-ui, sans-serif" font-size="11">Watch Time &amp; Subs</text>
+      <text x="145" y="60" fill="#6B7280" font-family="system-ui, sans-serif" font-size="11">5.1K views • 3 weeks ago</text>
+    </g>
+  </g>
+</svg>

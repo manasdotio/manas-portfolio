@@ -1,5 +1,5 @@
 .section {
-  margin-top: 64px;
+  margin-top: 44px;
   overflow: hidden;
 }
 
@@ -9,59 +9,60 @@
   gap: 16px;
 }
 
+/* ── Balanced 2x2 Bento Grid ── */
 .stackGrid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
 }
 
 .stackCard {
-  background: #0f0f0f;
-  border: 1px solid #1e1e1e;
-  padding: 18px;
+  background: #0c0e15;
+  border: 1px solid #1e2434;
+  border-radius: 10px;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
   transition:
     background-color 0.25s ease,
     border-color 0.25s ease,
-    box-shadow 0.25s ease;
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
 }
 
-.stackCard:hover {
-  background: #131313;
+@media (hover: hover) and (pointer: fine) {
+  .stackCard:hover {
+    background: #0f121b;
+    transform: translateY(-2px);
+  }
+
+  .stackCard.frontend:hover {
+    border-color: rgba(196, 181, 253, 0.35);
+    box-shadow: 0 8px 24px rgba(196, 181, 253, 0.08);
+  }
+
+  .stackCard.backend:hover {
+    border-color: rgba(125, 211, 252, 0.35);
+    box-shadow: 0 8px 24px rgba(125, 211, 252, 0.08);
+  }
+
+  .stackCard.database:hover {
+    border-color: rgba(134, 239, 172, 0.35);
+    box-shadow: 0 8px 24px rgba(134, 239, 172, 0.08);
+  }
+
+  .stackCard.infra:hover {
+    border-color: rgba(252, 211, 77, 0.35);
+    box-shadow: 0 8px 24px rgba(252, 211, 77, 0.08);
+  }
 }
 
-.stackCard.frontend:hover {
-  border-color: rgba(196, 181, 253, 0.4);
-  box-shadow: 0 0 0 1px rgba(196, 181, 253, 0.4);
-}
-
-.stackCard.backend:hover {
-  border-color: rgba(125, 211, 252, 0.4);
-  box-shadow: 0 0 0 1px rgba(125, 211, 252, 0.4);
-}
-
-.stackCard.database:hover {
-  border-color: rgba(134, 239, 172, 0.4);
-  box-shadow: 0 0 0 1px rgba(134, 239, 172, 0.4);
-}
-
-.stackCard.infra:hover {
-  border-color: rgba(252, 211, 77, 0.4);
-  box-shadow: 0 0 0 1px rgba(252, 211, 77, 0.4);
-}
-
-.categoryLabel {
-  margin: 0;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
+/* ── Card Header ── */
 .cardHead {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 14px;
+  justify-content: space-between;
+  margin-bottom: 16px;
 }
 
 .categoryBadge {
@@ -77,187 +78,128 @@
 
 .categoryBadge.frontend {
   background: rgba(196, 181, 253, 0.1);
+  color: #c4b5fd;
 }
 
 .categoryBadge.backend {
   background: rgba(125, 211, 252, 0.1);
+  color: #7dd3fc;
 }
 
 .categoryBadge.database {
   background: rgba(134, 239, 172, 0.1);
+  color: #86efac;
 }
 
 .categoryBadge.infra {
   background: rgba(252, 211, 77, 0.1);
-}
-
-.stackCard.frontend:hover .categoryBadge.frontend {
-  background: rgba(196, 181, 253, 0.2);
-}
-
-.stackCard.backend:hover .categoryBadge.backend {
-  background: rgba(125, 211, 252, 0.2);
-}
-
-.stackCard.database:hover .categoryBadge.database {
-  background: rgba(134, 239, 172, 0.2);
-}
-
-.stackCard.infra:hover .categoryBadge.infra {
-  background: rgba(252, 211, 77, 0.2);
-}
-
-.frontend {
-  color: #c4b5fd;
-}
-
-.backend {
-  color: #7dd3fc;
-}
-
-.database {
-  color: #86efac;
-}
-
-.infra {
   color: #fcd34d;
 }
 
-.itemList {
-  list-style: none;
-  padding: 0;
+.categoryLabel {
   margin: 0;
-  display: grid;
-  gap: 10px;
-}
-
-.itemText {
+  font-family: Inter, sans-serif;
   font-size: 13px;
-  color: #808080;
-  line-height: 1.5;
-  transition: color 0.25s ease;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #ffffff;
 }
 
-.itemRow {
+.itemCountBadge {
+  font-family: monospace;
+  font-size: 11px;
+  color: #6b7280;
+  background: #121520;
+  border: 1px solid #22283a;
+  padding: 2px 9px;
+  border-radius: 9999px;
+}
+
+/* ── Horizontal Cluster of Tactile Interactive Pills ── */
+.pillsWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.techPill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  padding: 7px 13px;
+  border-radius: 7px;
+  background: #11141e;
+  border: 1px solid #202636;
+  color: #9ca3af;
+  font-size: 12px;
+  font-family: Inter, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.itemIcon {
-  color: #555555;
-  transition: color 0.25s ease;
+@media (hover: hover) and (pointer: fine) {
+  .techPill:hover {
+    background: #161b28;
+    border-color: #353e56;
+    color: #ffffff;
+    transform: translateY(-1px);
+  }
+
+  .techPill:hover .pillIcon {
+    color: #ffffff;
+  }
 }
 
-.stackCard:hover .itemText {
-  color: #b3b3b3;
+.techPillActive {
+  background: rgba(59, 130, 246, 0.18) !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 14px rgba(59, 130, 246, 0.3) !important;
+  transform: translateY(-1px);
 }
 
-.stackCard.frontend:hover .itemIcon {
-  color: #c4b5fd;
-}
-
-.stackCard.backend:hover .itemIcon {
-  color: #7dd3fc;
-}
-
-.stackCard.database:hover .itemIcon {
-  color: #86efac;
-}
-
-.stackCard.infra:hover .itemIcon {
-  color: #fcd34d;
-}
-
-.marqueeStrip {
-  margin-top: 14px;
-  position: relative;
-  overflow: hidden;
-  --edge-fade: 80px;
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0,
-    #000 var(--edge-fade),
-    #000 calc(100% - var(--edge-fade)),
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent 0,
-    #000 var(--edge-fade),
-    #000 calc(100% - var(--edge-fade)),
-    transparent 100%
-  );
-}
-
-.marqueeTrack {
-  display: flex;
-  gap: 10px;
-  width: max-content;
-  animation: scroll 45s linear infinite;
-}
-
-.marqueeStrip:hover .marqueeTrack {
-  animation-play-state: paused;
-}
-
-.marqueeItem {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 14px;
-  border: 1px solid #222222;
-  background: #0d0d0d;
-  white-space: nowrap;
-}
-
-/* .marqueeDot removed: color dots no longer used in marquee */
-
-.marqueeIcon {
-  color: var(--color-text-ghost);
+.pillIcon {
+  color: #6b7280;
   transition: color 0.2s ease;
+  flex-shrink: 0;
 }
 
-.marqueeName {
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  color: #a1a1a1;
-  text-transform: uppercase;
+.pillIconActive {
+  color: #60a5fa !important;
 }
 
-.marqueeItem:hover .marqueeIcon {
-  color: #888888;
+.pillText {
+  line-height: 1;
 }
 
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
+.pillDot {
+  font-size: 8px;
+  color: #60a5fa;
+  margin-left: 2px;
+}
 
-  100% {
-    transform: translateX(-50%);
-  }
+/* Category Accent colors */
+.frontend .categoryLabel {
+  color: #e5e7eb;
+}
+
+.backend .categoryLabel {
+  color: #e5e7eb;
+}
+
+.database .categoryLabel {
+  color: #e5e7eb;
+}
+
+.infra .categoryLabel {
+  color: #e5e7eb;
 }
 
 @media (max-width: 768px) {
-  .section {
-    margin-top: 40px;
-  }
-
-  .sectionHeader {
-    padding: 0 24px;
-    margin-bottom: 24px;
-  }
-
   .stackGrid {
     grid-template-columns: 1fr;
-  }
-
-  .marqueeStrip {
-    --edge-fade: 40px;
-  }
-
-  .marqueeItem {
-    padding: 8px 12px;
+    gap: 14px;
   }
 }

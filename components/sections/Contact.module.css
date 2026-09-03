@@ -1,38 +1,44 @@
 .section {
-  margin-top: 80px;
+  margin-top: 40px;
 }
 
 .heading {
-  padding: 0 48px;
-  text-align: center;
-  margin-bottom: 34px;
+  padding: 0;
+  margin-bottom: 20px;
 }
 
 .headingEyebrow {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .headingLine {
   width: 40px;
   height: 1px;
-  background: #333333;
+  background: #444444;
 }
 
 .headingIndex {
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #666666;
+  color: #888888;
+  font-weight: 500;
+}
+
+.headingRow {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
 }
 
 .headingPrimary,
 .headingSecondary {
   margin: 0;
   font-family: var(--font-instrument);
-  font-size: 56px;
+  font-size: 48px;
   font-weight: 500;
   line-height: 1;
 }
@@ -47,26 +53,24 @@
 }
 
 .contentWrap {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 0 48px;
+  max-width: 640px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .subtext {
   margin: 0;
   font-family: Inter, sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.8;
   color: var(--color-text-muted);
-  max-width: 640px;
+  max-width: 560px;
 }
 
 .emailLink {
-  margin-top: 22px;
+  margin-top: 18px;
   font-family: var(--font-instrument);
   font-size: 22px;
   font-weight: 400;
@@ -81,11 +85,10 @@
 }
 
 .ctaRow {
-  margin-top: 28px;
+  margin-top: 22px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .ctaPrimary,
@@ -93,8 +96,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 170px;
-  padding: 13px 22px;
+  min-width: 150px;
+  padding: 11px 20px;
   font-family: Inter, sans-serif;
   font-size: 11px;
   letter-spacing: 0.11em;
@@ -117,7 +120,7 @@
 .ctaGhost {
   background: transparent;
   color: var(--color-text-secondary);
-  border: 1px solid #333333;
+  border: 1px solid #2a2a2a;
 }
 
 .ctaGhost:hover {
@@ -127,14 +130,13 @@
 }
 
 .socialRow {
-  margin-top: 36px;
+  margin-top: 28px;
   width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 18px;
   padding-top: 18px;
-  border-top: 1px solid #222222;
+  border-top: 1px solid #2a2a2a;
   flex-wrap: wrap;
 }
 
@@ -153,18 +155,8 @@
 }
 
 @media (max-width: 1024px) {
-  .heading,
-  .contentWrap {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-
   .headingPrimary,
   .headingSecondary {
-    font-size: 42px;
-  }
-
-  .socialRow {
-    gap: 12px;
+    font-size: 36px;
   }
 }

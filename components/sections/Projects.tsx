@@ -1,68 +1,21 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./Projects.module.css";
 import { SOCIAL_LINKS } from "../data/links";
+import { useTechFilter } from "../ui/stackFilter";
+import { playClickSound, playToggleSound } from "../ui/sound";
+import { PORTFOLIO_DATA, Project } from "../../data/portfolio";
 
-const GITHUB_HREF = SOCIAL_LINKS.find((s) => s.platform === "GitHub")?.href ?? "#";
-
-type ProjectStatus = "Live" | "In Progress";
-
-type Project = {
-  name: string;
-  year: number;
-  status: ProjectStatus;
-  description: string;
-  architecture: string;
-  tags: string[];
-  liveUrl?: string;
-  githubUrl: string;
-  image: string;
-};
-
-const projects: Project[] = [
-  {
-    name: "Book Collection App",
-    year: 2025,
-    status: "Live",
-    description:
-      "A full-stack app to manage and track your personal book library. Add books, set reading status, and organize your wishlist.",
-    architecture: "Node API with typed Next.js client and relational persistence.",
-    tags: ["Next.js", "TypeScript", "Tailwind", "Node.js"],
-    liveUrl: "#",
-    githubUrl: GITHUB_HREF,
-    image: "/assets/project.png",
-  },
-  {
-    name: "Portfolio Website",
-    year: 2025,
-    status: "In Progress",
-    description:
-      "The site you are looking at. Built with a focus on typography, whitespace, and motion. Custom marquee and minimal dark aesthetic throughout.",
-    architecture: "Component-driven Next.js UI with modular section styling.",
-    tags: ["Next.js", "TypeScript", "Tailwind", "Framer Motion"],
-    liveUrl: "#",
-    githubUrl: GITHUB_HREF,
-    image: "/assets/project.png",
-  },
-  {
-    name: "TaskFlow Dashboard",
-    year: 2024,
-    status: "Live",
-    description:
-      "A team productivity dashboard for tracking tasks, sprint priorities, and release milestones with clean visual reporting.",
-    architecture: "React dashboard backed by PostgreSQL and containerized services.",
-    tags: ["React", "TypeScript", "PostgreSQL", "Docker"],
-    githubUrl: GITHUB_HREF,
-    image: "/assets/project.png",
-  },
-];
-
-const formatProjectIndex = (index: number) => String(index + 1).padStart(2, "0");
+const GITHUB_HREF = SOCIAL_LINKS.find((s) => s.platform === "GitHub")?.href ?? "https://github.com/manasdotio";
 
 const getTagTone = (tag: string) => {
-  const frontendTags = new Set(["Next.js", "React", "TypeScript", "Tailwind", "Framer Motion"]);
-  const backendTags = new Set(["Node.js", "Express", "NestJS"]);
+  const frontendTags = new Set(["Next.js", "React", "TypeScript", "Tailwind", "Framer Motion", "JavaScript", "CSS"]);
+  const backendTags = new Set(["Node.js", "Express", "NestJS", "Browser Extension"]);
   const databaseTags = new Set(["PostgreSQL", "MongoDB", "MySQL", "Prisma"]);
-  const infraTags = new Set(["Docker", "Kubernetes", "AWS", "Vercel"]);
+  const infraTags = new Set(["Docker", "Kubernetes", "AWS", "Vercel", "Firefox", "Chrome", "Vite"]);
 
   if (frontendTags.has(tag)) return styles.tagFrontend;
   if (backendTags.has(tag)) return styles.tagBackend;
@@ -72,28 +25,146 @@ const getTagTone = (tag: string) => {
 };
 
 const Projects = () => {
+  const { selectedTech, setTechFilter } = useTechFilter();
+  const [ytDistractMode, setYtDistractMode] = useState(false);
+
+  // Active projects filtered from data/portfolio.ts
+  const projects = PORTFOLIO_DATA.projects.filter((p) => p.enabled);
+
+  const handleCardMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) return;
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty("--mouse-x", `${x}px`);
+    card.style.setProperty("--mouse-y", `${y}px`);
+  };
+
+  const matchesFilter = (project: Project) => {
+    if (!selectedTech) return true;
+    const techLower = selectedTech.toLowerCase();
+    return project.tags.some(
+      (t) =>
+        t.toLowerCase() === techLower ||
+        (techLower === "browser extension" && t.toLowerCase().includes("extension")) ||
+        (techLower === "tailwind css" && t.toLowerCase() === "tailwind")
+    );
+  };
+
   return (
-    <section className={styles.section} aria-label="Selected work">
+    <section id="projects" className={styles.section} aria-label="Selected work">
       <div className={styles.heading}>
         <div className={styles.headingEyebrow}>
           <span className={styles.headingLine} />
           <span className={styles.headingIndex}>02</span>
         </div>
-        <h2 className={styles.headingPrimary}>Selected</h2>
-        <p className={styles.headingSecondary}>work.</p>
+        <div className="flex items-baseline justify-between flex-wrap gap-3">
+          <div className={styles.headingRow}>
+            <h2 className={styles.headingPrimary}>Selected</h2>
+            <p className={styles.headingSecondary}>work.</p>
+          </div>
+
+          {selectedTech && (
+            <div className="flex items-center gap-2 rounded-full border border-blue-500/40 bg-blue-500/10 px-3 py-1 font-mono text-xs text-blue-400">
+              <span>
+                Filtered by <strong className="text-white">{selectedTech}</strong>
+              </span>
+              <button
+                onClick={() => setTechFilter(null)}
+                className="ml-1 text-blue-300 hover:text-white cursor-pointer"
+                title="Clear filter"
+              >
+                ✕ Clear
+              </button>
+            </div>
+          )}
+        </div>
       </div>
 
-      <div className={styles.projectsList}>
+      {/* Responsive 3-card grid */}
+      <div className={styles.projectsGrid}>
         {projects.map((project, index) => {
           const statusClass =
             project.status === "Live" ? styles.statusLive : styles.statusProgress;
+          const isMatch = matchesFilter(project);
+          const isYt = project.name === "Intentional YT";
+          const currentImg = isYt && ytDistractMode && project.altImage ? project.altImage : project.image;
 
           return (
-            <article className={styles.projectRow} key={project.name}>
-              <div className={styles.textColumn}>
+            <article
+              className={`${styles.projectCard} ${
+                selectedTech && !isMatch ? styles.cardDimmed : ""
+              } ${selectedTech && isMatch ? styles.cardHighlighted : ""}`}
+              key={project.slug}
+              onMouseMove={handleCardMouseMove}
+            >
+              {/* Screenshot Banner with Interactive Modes */}
+              <div className={styles.imageWrap}>
+                <Image
+                  src={currentImg}
+                  alt={project.name}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                  className={styles.projectImage}
+                  loading="lazy"
+                />
+
+                {/* Interactive Toggle Pill for Intentional YT */}
+                {isYt && project.altImage && (
+                  <div className="absolute top-3 right-3 z-20">
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const next = !ytDistractMode;
+                        setYtDistractMode(next);
+                        playToggleSound(!next);
+                      }}
+                      title="Toggle between clean and cluttered YouTube states"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/75 px-2.5 py-1 text-[10px] font-mono font-medium text-white backdrop-blur-md transition-colors hover:border-blue-400 cursor-pointer shadow-lg"
+                    >
+                      <span
+                        className={`h-1.5 w-1.5 rounded-full ${
+                          ytDistractMode ? "bg-red-400" : "bg-green-400"
+                        }`}
+                      />
+                      <span>{ytDistractMode ? "Cluttered Feed" : "Focus Mode"}</span>
+                      <span className="text-[9px] text-[#9ca3af]">⇄</span>
+                    </button>
+                  </div>
+                )}
+
+                <div className={styles.imageOverlay}>
+                  <div className="flex items-center gap-2">
+                    <Link
+                      href={`/projects/${project.slug}`}
+                      className={styles.overlayCta}
+                      onClick={() => playClickSound()}
+                    >
+                      Case Study →
+                    </Link>
+                    {project.liveUrl && project.liveUrl !== "#" ? (
+                      <Link
+                        href={project.liveUrl}
+                        className={styles.overlayCta}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => playClickSound()}
+                      >
+                        Live ↗
+                      </Link>
+                    ) : null}
+                  </div>
+                </div>
+              </div>
+
+              {/* Card Body */}
+              <div className={styles.cardBody}>
+                {/* Meta row: High contrast index & year */}
                 <div className={styles.projectMeta}>
                   <span className={styles.projectIndexYear}>
-                    {formatProjectIndex(index)} - {project.year}
+                    {String(index + 1).padStart(2, "0")} · {project.year}
                   </span>
                   <span className={`${styles.status} ${statusClass}`}>
                     <span className={styles.statusDot} />
@@ -101,51 +172,69 @@ const Projects = () => {
                   </span>
                 </div>
 
-                <h3 className={styles.projectName}>{project.name}</h3>
+                <Link
+                  href={`/projects/${project.slug}`}
+                  onClick={() => playClickSound()}
+                  className="group/title block"
+                >
+                  <h3 className={styles.projectName}>
+                    <span>{project.name}</span>
+                    <span className="ml-1.5 inline-block font-sans text-xs text-[#6b7280] group-hover/title:text-[#60a5fa] transition-colors">
+                      ↗
+                    </span>
+                  </h3>
+                </Link>
                 <p className={styles.description}>{project.description}</p>
 
-                <div className={styles.archRow}>
-                  <span className={styles.archLabel}>Arch</span>
-                  <span className={styles.archText}>{project.architecture}</span>
-                </div>
+                {/* Card Footer: Tags & Action Links */}
+                <div className={styles.projectFooter}>
+                  <div className={styles.tags}>
+                    {project.tags.map((tag) => {
+                      const isTagActive = selectedTech?.toLowerCase() === tag.toLowerCase();
 
-                <div className={styles.tags}>
-                  {project.tags.map((tag) => (
-                    <span className={`${styles.tag} ${getTagTone(tag)}`} key={`${project.name}-${tag}`}>
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                      return (
+                        <span
+                          key={`${project.name}-${tag}`}
+                          onClick={() => setTechFilter(isTagActive ? null : tag)}
+                          className={`${styles.tag} ${getTagTone(tag)} ${
+                            isTagActive ? styles.tagActive : ""
+                          } cursor-pointer`}
+                          title={`Filter by ${tag}`}
+                        >
+                          {tag}
+                        </span>
+                      );
+                    })}
+                  </div>
 
-                <div className={styles.links}>
-                  {project.liveUrl ? (
-                    <Link href={project.liveUrl} className={styles.projectLink}>
-                      <span>Live</span>
-                      <span className={styles.projectArrow}>↗</span>
+                  <div className={styles.links}>
+                    <Link
+                      href={`/projects/${project.slug}`}
+                      className="font-mono text-[11px] font-semibold text-blue-400 hover:text-blue-300 transition-colors mr-1"
+                      onClick={() => playClickSound()}
+                    >
+                      Case Study →
                     </Link>
-                  ) : null}
-                  <Link href={project.githubUrl} className={styles.projectLink}>
-                    <span>GitHub</span>
-                    <span className={styles.projectArrow}>↗</span>
-                  </Link>
-                </div>
-              </div>
-
-              <div className={styles.imageColumn}>
-                <div className={styles.imageFrame}>
-                  <div className={styles.chromeBar}>
-                    <span className={styles.chromeDots}>
-                      <span className={styles.chromeDot} />
-                      <span className={styles.chromeDot} />
-                      <span className={styles.chromeDot} />
-                    </span>
-                    <span className={styles.chromeUrl}>preview.local/project</span>
-                  </div>
-                  <div className={styles.imageBody}>
-                    <img src={project.image} alt={project.name} className={styles.projectImage} />
-                  </div>
-                  <div className={styles.imageOverlay}>
-                    <span className={styles.overlayCta}>View project</span>
+                    {project.liveUrl && project.liveUrl !== "#" ? (
+                      <Link
+                        href={project.liveUrl}
+                        className={styles.projectLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => playClickSound()}
+                      >
+                        Live ↗
+                      </Link>
+                    ) : null}
+                    <Link
+                      href={project.githubUrl}
+                      className={styles.projectLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => playClickSound()}
+                    >
+                      GitHub ↗
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -156,12 +245,18 @@ const Projects = () => {
 
       <div className={styles.bottomCta}>
         <div>
-          <span className={styles.moreText}>More on</span>
-          <Link href={GITHUB_HREF} className={styles.moreLink}>
+          <span className={styles.moreText}>More on </span>
+          <Link
+            href={GITHUB_HREF}
+            className={styles.moreLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => playClickSound()}
+          >
             GitHub ↗
           </Link>
         </div>
-        <span className={styles.countText}>3 projects</span>
+        <span className={styles.countText}>{projects.length} projects</span>
       </div>
     </section>
   );

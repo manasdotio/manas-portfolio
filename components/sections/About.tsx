@@ -1,85 +1,114 @@
+"use client";
+
 import Link from "next/link";
 import styles from "./About.module.css";
+import { playClickSound } from "../ui/sound";
 
-const stats = [
-  { value: "5+", label: "APIs built & deployed" },
-  { value: "3", label: "Databases worked with" },
-  { value: "12", label: "Projects shipped" },
-  { value: "1", label: "Cup of chai / day" },
-];
+import { PORTFOLIO_DATA } from "../../data/portfolio";
 
-const currentFocus = [
-  "Building this portfolio",
-  "Learning system design",
-  "Open to fullstack roles",
-  "Based in Jaipur, open to remote",
-];
+const metrics = PORTFOLIO_DATA.metrics.filter((m) => m.enabled);
+const timeline = PORTFOLIO_DATA.timeline.filter((t) => t.enabled);
+const currentFocus = PORTFOLIO_DATA.currentFocus;
 
 const About = () => {
   return (
-    <section className={styles.section} aria-label="About me">
+    <section id="about" className={styles.section} aria-label="About me">
+      {/* Section Header */}
       <div className={styles.heading}>
         <div className={styles.headingEyebrow}>
           <span className={styles.headingLine} />
           <span className={styles.headingIndex}>03</span>
         </div>
-        <h2 className={styles.headingPrimary}>About</h2>
-        <p className={styles.headingSecondary}>me.</p>
+        <div className="flex items-baseline justify-between flex-wrap gap-3">
+          <div className={styles.headingRow}>
+            <h2 className={styles.headingPrimary}>About</h2>
+            <p className={styles.headingSecondary}>me.</p>
+          </div>
+          <span className="font-mono text-xs text-[#6b7280]">
+            Jaipur, IN · Fresher / Junior Fullstack Developer
+          </span>
+        </div>
       </div>
 
       <div className={styles.contentGrid}>
+        {/* Left Column: Timeline (Latest first) + Honest Metrics */}
         <div className={styles.leftColumn}>
-          <div className={styles.imageFrame}>
-            <img src="/assets/avatar.jpg" alt="Manas Singh" className={styles.profileImage} />
-          </div>
-
-          <div className={styles.metaRow}>
-            <span className={styles.nameText}>Manas Singh</span>
-            <span className={styles.locationWrap}>
-              <span className={styles.locationDot} />
-              <span className={styles.locationText}>Jaipur, India</span>
-            </span>
-          </div>
-        </div>
-
-        <div className={styles.rightColumn}>
-          <p className={styles.intro}>
-            I build things for the web - <em>carefully, intentionally,</em> and with a lot
-            of attention to detail.
-          </p>
-
-          <div className={styles.bodyCopy}>
-            <p>
-              I got into coding because I loved seeing ideas become tangible. What started as
-              tweaking layouts and small scripts turned into a deeper interest in building
-              products that people actually use.
-            </p>
-            <p>
-              As a developer, I care a lot about craft. Clean structure, thoughtful motion,
-              accessibility, and small interface details matter to me because they shape how a
-              product feels every day.
-            </p>
-            <p>
-              Right now I am focused on leveling up system thinking while continuing to ship
-              polished fullstack work. I am looking for a <Link href="#" className={styles.inlineLink}>full-time role</Link> and open to the right <Link href="#" className={styles.inlineLink}>freelance project</Link> where quality and ownership are valued.
+          <div className={styles.introBox}>
+            <p className={styles.intro}>
+              I build things for the web — <em>carefully, intentionally,</em> and with a genuine
+              curiosity to learn how things work under the hood.
             </p>
           </div>
 
-          <div className={styles.divider} />
+          {/* Connected Timeline (Latest first) */}
+          <div className={styles.timelineContainer}>
+            <div className={styles.timelineLineTrack} />
+            <div className={styles.timelineList}>
+              {timeline.map((item, index) => (
+                <div className={styles.timelineItem} key={item.year}>
+                  <div className={styles.timelineMarker}>
+                    <span
+                      className={`${styles.timelineDot} ${
+                        index === 0 ? styles.timelineDotActive : ""
+                      }`}
+                    />
+                  </div>
+                  <div className={styles.timelineContent}>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span
+                        className={`${styles.timelineYearBadge} ${
+                          index === 0 ? styles.timelineYearBadgeActive : ""
+                        }`}
+                      >
+                        {item.year}
+                      </span>
+                      <h4 className={styles.timelineTitle}>{item.title}</h4>
+                    </div>
+                    <p className={styles.timelineDesc}>{item.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
 
-          <div className={styles.statsGrid}>
-            {stats.map((item) => (
-              <div className={styles.statItem} key={item.label}>
-                <p className={styles.statValue}>{item.value}</p>
-                <p className={styles.statLabel}>{item.label}</p>
+          {/* Key Metrics Grid */}
+          <div className={styles.metricsGrid}>
+            {metrics.map((m) => (
+              <div className={styles.metricCard} key={m.label}>
+                <p className={styles.metricValue}>{m.value}</p>
+                <p className={styles.metricLabel}>{m.label}</p>
               </div>
             ))}
           </div>
+        </div>
 
-          <div className={styles.divider} />
+        {/* Right Column: Honest, Grounded Bio & Currently Status */}
+        <div className={styles.rightColumn}>
+          <div className={styles.bodyCopy}>
+            <p>
+              I&apos;m a self-taught fullstack developer and fresher based in Jaipur, India.
+              I started coding in 2022 out of curiosity, and I quickly fell in love with
+              turning ideas into working software.
+            </p>
+            <p>
+              Rather than just watching tutorials, I learn best by building real things — like a
+              distraction-free YouTube extension used by real people, a desktop environment in
+              the browser, and fullstack media applications.
+            </p>
+            <p>
+              As an early-career developer, I bring solid foundations in React, TypeScript,
+              Node.js, and databases, along with a genuine hunger to learn. I&apos;m actively
+              looking for my first{" "}
+              <Link href="#contact" className="text-white underline underline-offset-4 decoration-blue-500 hover:text-blue-400 transition-colors">
+                entry-level role or internship
+              </Link>{" "}
+              where I can contribute to a great team, learn from experienced engineers, and grow.
+            </p>
+          </div>
 
+          {/* Currently Status Board */}
           <div className={styles.currentBlock}>
-            <p className={styles.currentLabel}>Currently</p>
+            <p className={styles.subHeadingLabel}>Currently</p>
             <div className={styles.currentList}>
               {currentFocus.map((item) => (
                 <div className={styles.currentItem} key={item}>
@@ -90,11 +119,22 @@ const About = () => {
             </div>
           </div>
 
+          {/* Action CTAs */}
           <div className={styles.ctaRow}>
-            <Link href="#" className={styles.ctaPrimary}>
-              Download CV
-            </Link>
-            <Link href="#" className={styles.ctaSecondary}>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => playClickSound()}
+              className={styles.ctaPrimary}
+            >
+              Download CV (PDF) ↗
+            </a>
+            <Link
+              href="#contact"
+              onClick={() => playClickSound()}
+              className={styles.ctaSecondary}
+            >
               Get in touch
             </Link>
           </div>

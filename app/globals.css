@@ -1,33 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap");
 @import "tailwindcss";
-
-/* :root {
-  --font-helvetica: "Helvetica", "Arial", sans-serif;
-  --font-instrument: "Instrument Serif", serif;
-  --font-sans: serif, sans-serif;
-
-  --color-background: #0a0a0a;
-  --color-surface: #111111;
-  --color-border: #1a1a1a;
-  --color-border-hover: #2a2a2a;
-
-  --color-text-primary: #f0f0f0;
-  --color-text-secondary: #c8c8c8;
-  --color-text-muted: oklch(51.4% 0.222 16.935);
-  --color-text-dim: #2a2a2a;
-
-  --color-accent: #60a5fa;
-  --color-status-live: #3a7a3a;
-  --color-status-wip: #7a6a2a;
-} */
+ 
 @theme{
   --font-helvetica: "Helvetica", "Arial", sans-serif;
-  --font-instrument: "Instrument Serif", serif;
+  --font-instrument: var(--font-instrument), "Instrument Serif", serif;
   --font-sans: serif, sans-serif;
 
   --color-background: #0a0a0a;
   --color-surface: #111111;
-  --color-border: #242424;
+  --color-border: #2a2a2a;
   --color-border-hover: oklch(55.2% 0.016 285.938);
 
   --color-text-primary: #ffffff;
@@ -49,42 +29,26 @@
   --color-text-ghost: #555555;
 }
 
-@layer components {
-  /* Button: vertical fill from bottom to top on hover */
-  .btn-fill-vertical {
-    position: relative;
-    overflow: hidden;
-    border: 1px solid var(--color-border);
-    transition: color 0.25s ease, border-color 0.25s ease;
-    background: transparent;
-  }
+/* ── Scroll reveal ── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
 
-  .btn-fill-vertical::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 100%;
-    background: var(--color-accent);
-    transform: translateY(100%);
-    transition: transform 0.35s ease;
-    z-index: 0;
-  }
+[data-reveal][data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-  .btn-fill-vertical span {
-    position: relative;
-    z-index: 1;
-    display: inline-block;
-  }
-
-  .btn-fill-vertical:hover::before {
-    transform: translateY(0);
-  }
-
-  .btn-fill-vertical:hover {
-    color: var(--color-background);
-    border-color: var(--color-accent);
+/* On mobile devices & reduced motion, reveal instantly to avoid scroll stutter & composite delays */
+@media (max-width: 768px), (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
 
@@ -93,11 +57,44 @@
     box-sizing: border-box;
   }
 
+  html {
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+  }
+
+  ::selection {
+    background: #2563eb;
+    color: #ffffff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #07080b;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #202534;
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #32384c;
+  }
+
   html,
   body {
     width: 100%;
     min-height: 100%;
+    overflow-x: hidden;
     font-family: "Helvetica", "Arial", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-tap-highlight-color: transparent;
   }
 
   a {
@@ -105,17 +102,3 @@
   }
 }
 
-@media (max-width: 768px) {
-  .avatarContainer {
-    display: none;
-  }
-
-  .heroLayout {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .heroTextColumn {
-    width: 100%;
-  }
-}
