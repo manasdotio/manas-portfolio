@@ -20,31 +20,10 @@ export async function POST(req: Request) {
       );
     }
 
-    // 1. Deliver to Web3Forms (forwards directly to Gmail)
-    const web3Key = process.env.WEB3FORMS_ACCESS_KEY || "020d8940-66fd-4bcd-bc6e-eb6c105f2dc7";
+    // NOTE: Web3Forms is called directly from the browser (QuickContactForm.tsx)
+    // because their API is behind Cloudflare which blocks server-side Node.js requests.
+    // This route is kept as an optional secondary delivery sink (Resend / webhook).
 
-    const web3Res = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        access_key: web3Key,
-        name,
-        email,
-        message,
-        from_name: "Portfolio Contact Form",
-        subject: `New message from ${name} (manassingh.dev)`,
-      }),
-    });
-
-    const web3Data = await web3Res.json();
-    if (!web3Data.success) {
-      throw new Error(web3Data.message || "Failed to send message via Web3Forms.");
-    }
-
-    // 2. Optional: Resend or Webhook if configured in environment
     const resendKey = process.env.RESEND_API_KEY;
     const webhookUrl = process.env.CONTACT_WEBHOOK_URL;
 

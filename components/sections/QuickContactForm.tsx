@@ -18,20 +18,36 @@ export default function QuickContactForm() {
       return;
     }
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setStatus("error");
+      setFeedbackMessage("Please provide a valid email address.");
+      return;
+    }
+
     setStatus("submitting");
     setFeedbackMessage("");
 
     try {
-      const res = await fetch("/api/contact", {
+      // Web3Forms must be called directly from the browser —
+      // their API is behind Cloudflare which blocks server-side Node.js fetches.
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: "020d8940-66fd-4bcd-bc6e-eb6c105f2dc7",
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          from_name: "Portfolio Contact Form",
+          subject: `New message from ${formData.name} (manassingh.dev)`,
+        }),
       });
 
       const data = await res.json();
 
-      if (!res.ok) {
-        throw new Error(data.error || "Failed to send message");
+      if (!data.success) {
+        throw new Error(data.message || "Failed to send message.");
       }
 
       setStatus("success");
