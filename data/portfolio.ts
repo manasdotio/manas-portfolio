@@ -94,7 +94,7 @@ export const PORTFOLIO_DATA = {
   skills: [
     // Frontend
     { name: "React", category: "frontend", enabled: true },
-    { name: "Next.js", category: "frontend", enabled: false },
+    { name: "Next.js", category: "frontend", enabled: true },
     { name: "TypeScript", category: "frontend", enabled: true },
     { name: "Tailwind CSS", category: "frontend", enabled: true },
     { name: "Framer Motion", category: "frontend", enabled: false },
@@ -122,10 +122,10 @@ export const PORTFOLIO_DATA = {
   ] as SkillItem[],
 
   metrics: [
-    { value: "3", label: "Projects shipped", enabled: true },
-    { value: "2022", label: "Coding since", enabled: true },
-    { value: "10+", label: "Technologies used", enabled: true },
-    { value: "Open", label: "To entry / junior roles", enabled: true },
+    { value: "60 FPS", label: "Window manager frame rate", enabled: true },
+    { value: "0 ms", label: "FOUC on Firefox extension", enabled: true },
+    { value: "3", label: "Fullstack apps shipped", enabled: true },
+    { value: "Open", label: "To full-time & remote roles", enabled: true },
   ] as MetricItem[],
 
   timeline: [

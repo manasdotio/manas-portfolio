@@ -4,6 +4,7 @@ import Link from "next/link";
 import styles from "./Contact.module.css";
 import { SOCIAL_LINKS } from "../data/links";
 import CopyEmailButton from "../ui/CopyEmailButton";
+import QuickContactForm from "./QuickContactForm";
 import { playClickSound } from "../ui/sound";
 
 const EMAIL_LINK = SOCIAL_LINKS.find((item) => item.platform === "Email")?.href ?? "mailto:manasdotio@gmail.com";
@@ -30,8 +31,13 @@ const Contact = () => {
         </p>
 
         {/* Ergonomic Click-to-Copy Email with tactile feedback */}
-        <div className="mt-5">
+        <div className="mt-4">
           <CopyEmailButton email="manasdotio@gmail.com" />
+        </div>
+
+        {/* On-Page Message Form */}
+        <div className="mt-6 w-full">
+          <QuickContactForm />
         </div>
 
         <div className={styles.ctaRow}>

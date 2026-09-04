@@ -264,13 +264,14 @@ export default function CommandMenu() {
           setIsOpen(true);
         }}
         title="Open Command Palette (⌘K)"
-        className="group inline-flex items-center gap-2 rounded-md border border-[#262a36] bg-[#12141c]/80 px-2.5 py-1 text-xs text-[#9ca3af] transition-colors hover:border-[#3b4461] hover:text-white cursor-pointer"
+        aria-label="Open Command Palette"
+        className="group inline-flex items-center gap-1.5 rounded-md border border-[#262a36] bg-[#12141c]/80 px-2.5 py-1 text-xs text-[#9ca3af] transition-colors hover:border-[#3b4461] hover:text-white cursor-pointer"
       >
-        <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <svg className="h-3.5 w-3.5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
-        <span className="hidden sm:inline">Search</span>
-        <kbd className="rounded bg-[#1e2330] px-1.5 py-0.5 font-mono text-[10px] text-[#9ca3af] group-hover:text-white">
+        <span className="font-mono text-[11px] sm:font-sans sm:text-xs">Search</span>
+        <kbd className="hidden sm:inline-block rounded bg-[#1e2330] px-1.5 py-0.5 font-mono text-[10px] text-[#9ca3af] group-hover:text-white">
           ⌘K
         </kbd>
       </button>
