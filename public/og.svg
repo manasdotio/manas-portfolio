@@ -54,5 +54,5 @@
 
   <!-- Footer URL -->
   <text x="80" y="540" fill="#4B5563" font-family="monospace" font-size="15">jaipur, in · manasdotio@gmail.com</text>
-  <text x="1000" y="540" fill="#60A5FA" font-family="monospace" font-size="15" text-anchor="end">manasdotio.vercel.app ↗</text>
+  <text x="1000" y="540" fill="#60A5FA" font-family="monospace" font-size="15" text-anchor="end">manassingh.dev ↗</text>
 </svg>

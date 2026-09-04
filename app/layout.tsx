@@ -11,7 +11,7 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://manasdotio.vercel.app"),
+  metadataBase: new URL("https://manassingh.dev"),
   title: "Manas Singh — Fullstack Developer",
   description:
     "Fullstack developer based in Jaipur building complete web applications — from database to UI. Open to full-time roles and freelance projects.",
@@ -21,7 +21,7 @@ export const metadata = {
     title: "Manas Singh — Fullstack Developer",
     description:
       "Fullstack developer based in Jaipur building complete web applications — from database to UI.",
-    url: "https://manasdotio.vercel.app",
+    url: "https://manassingh.dev",
     siteName: "Manas Singh Portfolio",
     images: [
       {
