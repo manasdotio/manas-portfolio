@@ -111,9 +111,10 @@ const Header = () => {
           <a
             href="#contact"
             onClick={() => playClickSound()}
-            className="rounded-md border border-[#2d3345] bg-[#12151e] px-3 py-1 text-xs font-semibold text-[#d1d5db] transition-colors hover:border-blue-500/50 hover:bg-[#181c28] hover:text-white"
+            className="hidden sm:inline-flex items-center gap-1.5 rounded-md border border-emerald-500/30 bg-emerald-500/8 px-3 py-1 text-xs font-mono font-medium text-emerald-400 transition-colors hover:border-emerald-500/60 hover:text-emerald-300"
           >
-            Contact
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            Open to work
           </a>
         </div>
       </nav>

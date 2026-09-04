@@ -93,6 +93,7 @@ const Projects = () => {
 
           return (
             <article
+              aria-label={project.name}
               className={`${styles.projectCard} ${
                 selectedTech && !isMatch ? styles.cardDimmed : ""
               } ${selectedTech && isMatch ? styles.cardHighlighted : ""}`}
@@ -107,7 +108,7 @@ const Projects = () => {
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw"
                   className={styles.projectImage}
-                  loading="lazy"
+                  {...(index === 0 ? { priority: true } : { loading: "lazy" as const })}
                 />
 
                 {/* Interactive Toggle Pill for Intentional YT */}
@@ -122,6 +123,7 @@ const Projects = () => {
                         playToggleSound(!next);
                       }}
                       title="Toggle between clean and cluttered YouTube states"
+                      aria-pressed={ytDistractMode}
                       className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/75 px-2.5 py-1 text-[10px] font-mono font-medium text-white backdrop-blur-md transition-colors hover:border-blue-400 cursor-pointer shadow-lg"
                     >
                       <span
@@ -193,16 +195,18 @@ const Projects = () => {
                       const isTagActive = selectedTech?.toLowerCase() === tag.toLowerCase();
 
                       return (
-                        <span
+                        <button
                           key={`${project.name}-${tag}`}
+                          type="button"
                           onClick={() => setTechFilter(isTagActive ? null : tag)}
+                          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setTechFilter(isTagActive ? null : tag); } }}
                           className={`${styles.tag} ${getTagTone(tag)} ${
                             isTagActive ? styles.tagActive : ""
                           } cursor-pointer`}
                           title={`Filter by ${tag}`}
                         >
                           {tag}
-                        </span>
+                        </button>
                       );
                     })}
                   </div>

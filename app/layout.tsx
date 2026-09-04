@@ -57,7 +57,7 @@ export const metadata = {
     siteName: "Manas Singh Portfolio",
     images: [
       {
-        url: "/og.svg",
+        url: "https://manassingh.dev/og.svg",
         width: 1200,
         height: 630,
         alt: "Manas Singh — Fullstack Developer",
@@ -70,8 +70,8 @@ export const metadata = {
     card: "summary_large_image",
     title: "Manas Singh — Fullstack Developer",
     description: "Fullstack developer building complete web applications — from database to UI.",
-    creator: "@manassingh",
-    images: ["/og.svg"],
+    creator: "@manasdotio",
+    images: ["https://manassingh.dev/og.svg"],
   },
 };
 
@@ -88,7 +88,8 @@ const jsonLd = {
       sameAs: [
         "https://github.com/manasdotio",
         "https://www.linkedin.com/in/manasdotio",
-        "https://twitter.com/manassingh",
+        "https://twitter.com/manasdotio",
+        "https://x.com/manasdotio",
       ],
       address: {
         "@type": "PostalAddress",

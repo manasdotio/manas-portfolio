@@ -25,7 +25,7 @@ const About = () => {
             <p className={styles.headingSecondary}>me.</p>
           </div>
           <span className="font-mono text-xs text-[#6b7280]">
-            Jaipur, IN · Fresher / Junior Fullstack Developer
+            Jaipur, IN · Junior Fullstack Developer
           </span>
         </div>
       </div>
@@ -86,23 +86,23 @@ const About = () => {
         <div className={styles.rightColumn}>
           <div className={styles.bodyCopy}>
             <p>
-              I&apos;m a self-taught fullstack developer and fresher based in Jaipur, India.
-              I started coding in 2022 out of curiosity, and I quickly fell in love with
-              turning ideas into working software.
+              I build things people actually use — a Firefox extension that strips distraction
+              from YouTube, a browser-based desktop environment running at 60 FPS, and a
+              full-stack video platform with JWT authentication and MongoDB aggregation
+              pipelines.
             </p>
             <p>
-              Rather than just watching tutorials, I learn best by building real things — like a
-              distraction-free YouTube extension used by real people, a desktop environment in
-              the browser, and fullstack media applications.
+              Self-taught since 2022, I learn by building real systems, not by watching
+              tutorials. Every project on this site is something I designed, architected,
+              and shipped end-to-end.
             </p>
             <p>
-              As an early-career developer, I bring solid foundations in React, TypeScript,
-              Node.js, and databases, along with a genuine hunger to learn. I&apos;m actively
-              looking for my first{" "}
+              I write clean, typed code and care deeply about the details — performance,
+              accessibility, and UX that doesn't get in the way. I'm looking for a{" "}
               <Link href="#contact" className="text-white underline underline-offset-4 decoration-blue-500 hover:text-blue-400 transition-colors">
-                entry-level role or internship
+                team that values craft
               </Link>{" "}
-              where I can contribute to a great team, learn from experienced engineers, and grow.
+              where I can contribute from day one and grow alongside experienced engineers.
             </p>
           </div>
 
@@ -128,7 +128,7 @@ const About = () => {
               onClick={() => playClickSound()}
               className={styles.ctaPrimary}
             >
-              Download CV (PDF) ↗
+              Download Resume ↗
             </a>
             <Link
               href="#contact"

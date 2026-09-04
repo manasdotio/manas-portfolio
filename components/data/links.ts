@@ -11,8 +11,8 @@ export const SOCIAL_LINKS = [
   },
   {
     platform: "X",
-    handle: "@manassingh",
-    href: "https://twitter.com/manassingh",
+    handle: "@manasdotio",
+    href: "https://x.com/manasdotio",
   },
   {
     platform: "Email",

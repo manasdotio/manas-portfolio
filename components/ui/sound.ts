@@ -19,12 +19,20 @@ function getAudioContext(): AudioContext | null {
 
 export function isSoundEnabled(): boolean {
   if (typeof window === "undefined") return false;
-  return localStorage.getItem("portfolio_sound") === "true";
+  try {
+    return localStorage.getItem("portfolio_sound") === "true";
+  } catch {
+    return false;
+  }
 }
 
 export function setSoundEnabled(enabled: boolean): void {
   if (typeof window === "undefined") return;
-  localStorage.setItem("portfolio_sound", enabled ? "true" : "false");
+  try {
+    localStorage.setItem("portfolio_sound", enabled ? "true" : "false");
+  } catch {
+    // Private browsing or storage full — no-op
+  }
   window.dispatchEvent(new Event("portfolio_sound_change"));
 }
 

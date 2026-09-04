@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef, useMemo } from "react";
 import { playClickSound, playToggleSound, isSoundEnabled, setSoundEnabled } from "./sound";
+import { PORTFOLIO_DATA } from "../../data/portfolio";
 
 type CommandItem = {
   id: string;
@@ -70,61 +71,47 @@ export default function CommandMenu() {
       },
     },
 
-    // Projects
-    {
-      id: "proj-os",
-      title: "Operating System — Live Demo",
-      subtitle: "operating-system-nine.vercel.app",
-      category: "Projects",
-      badge: "Live App",
-      action: () => {
-        window.open("https://operating-system-nine.vercel.app", "_blank");
-        setIsOpen(false);
-      },
-    },
-    {
-      id: "proj-intentional-yt",
-      title: "Intentional YT — Firefox Add-on",
-      subtitle: "Distraction-free YouTube extension",
-      category: "Projects",
-      badge: "Add-on",
-      action: () => {
-        window.open("https://addons.mozilla.org/en-US/firefox/addon/intentional-yt/", "_blank");
-        setIsOpen(false);
-      },
-    },
-    {
-      id: "proj-intentional-yt-gh",
-      title: "Intentional YT — Source Code",
-      subtitle: "github.com/manasdotio/intentional-yt",
-      category: "Projects",
-      badge: "GitHub",
-      action: () => {
-        window.open("https://github.com/manasdotio/intentional-yt", "_blank");
-        setIsOpen(false);
-      },
-    },
-    {
-      id: "proj-vividstream",
-      title: "VividStream — GitHub Repository",
-      subtitle: "github.com/manasdotio/vividstream",
-      category: "Projects",
-      badge: "MERN Stack",
-      action: () => {
-        window.open("https://github.com/manasdotio/vividstream", "_blank");
-        setIsOpen(false);
-      },
-    },
+    // Projects — dynamically generated from portfolio data
+    ...PORTFOLIO_DATA.projects
+      .filter((p) => p.enabled)
+      .flatMap((p) => {
+        const entries: CommandItem[] = [];
+        if (p.liveUrl && p.liveUrl !== "#") {
+          entries.push({
+            id: `proj-${p.slug}-live`,
+            title: `${p.name} — Live Demo`,
+            subtitle: p.liveUrl.replace("https://", ""),
+            category: "Projects",
+            badge: p.status,
+            action: () => {
+              window.open(p.liveUrl, "_blank");
+              setIsOpen(false);
+            },
+          });
+        }
+        entries.push({
+          id: `proj-${p.slug}-gh`,
+          title: `${p.name} — Source Code`,
+          subtitle: p.githubUrl.replace("https://", ""),
+          category: "Projects",
+          badge: "GitHub",
+          action: () => {
+            window.open(p.githubUrl, "_blank");
+            setIsOpen(false);
+          },
+        });
+        return entries;
+      }),
 
     // Actions
     {
       id: "act-copy-email",
       title: "Copy Email Address",
-      subtitle: "manasdotio@gmail.com",
+      subtitle: PORTFOLIO_DATA.personal.email,
       category: "Actions",
       badge: "Clipboard",
       action: () => {
-        navigator.clipboard.writeText("manasdotio@gmail.com");
+        navigator.clipboard.writeText(PORTFOLIO_DATA.personal.email);
         setCopiedMessage("Email copied to clipboard!");
         setTimeout(() => {
           setCopiedMessage(null);

@@ -7,7 +7,6 @@ import CopyEmailButton from "../ui/CopyEmailButton";
 import QuickContactForm from "./QuickContactForm";
 import { playClickSound } from "../ui/sound";
 
-const EMAIL_LINK = SOCIAL_LINKS.find((item) => item.platform === "Email")?.href ?? "mailto:manasdotio@gmail.com";
 const SOCIAL_ROW_LINKS = SOCIAL_LINKS.filter((item) => item.platform !== "Email");
 
 const Contact = () => {
@@ -26,28 +25,21 @@ const Contact = () => {
 
       <div className={styles.contentWrap}>
         <p className={styles.subtext}>
-          Have an open fullstack role, a freelance project, or just want to chat system architecture?
-          I&apos;m responsive and always excited to connect with great teams.
+          Building something interesting? Have an open fullstack or frontend role?
+          I respond to every message, usually within a few hours.
         </p>
 
-        {/* Ergonomic Click-to-Copy Email with tactile feedback */}
+        {/* Click-to-Copy Email */}
         <div className="mt-4">
           <CopyEmailButton email="manasdotio@gmail.com" />
         </div>
 
-        {/* On-Page Message Form */}
+        {/* Primary: On-Page Message Form */}
         <div className="mt-6 w-full">
           <QuickContactForm />
         </div>
 
         <div className={styles.ctaRow}>
-          <a
-            href={EMAIL_LINK}
-            onClick={() => playClickSound()}
-            className={styles.ctaPrimary}
-          >
-            Send an email ↗
-          </a>
           <a
             href="/resume.pdf"
             target="_blank"
@@ -55,7 +47,7 @@ const Contact = () => {
             onClick={() => playClickSound()}
             className={styles.ctaGhost}
           >
-            Download Resume (PDF)
+            Download Resume ↗
           </a>
         </div>
 

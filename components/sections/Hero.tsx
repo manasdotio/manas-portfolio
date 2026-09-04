@@ -6,6 +6,11 @@ import LatestPush from "../ui/LatestPush";
 import LocalTime from "../ui/LocalTime";
 import { playClickSound } from "../ui/sound";
 import { PORTFOLIO_DATA } from "../../data/portfolio";
+import { SOCIAL_LINKS } from "../data/links";
+
+const HERO_SOCIAL_LINKS = SOCIAL_LINKS.filter(
+  (s) => s.platform === "GitHub" || s.platform === "LinkedIn" || s.platform === "X"
+);
 
 const Hero = () => {
   const [emailCopied, setEmailCopied] = useState(false);
@@ -77,7 +82,7 @@ const Hero = () => {
                 setTimeout(() => setEmailCopied(false), 2000);
               }}
               title="Copy email to clipboard"
-              className={`hidden sm:flex items-center gap-2 rounded-lg border px-3.5 py-2.5 text-xs font-mono transition-all duration-200 cursor-pointer ${
+              className={`flex items-center gap-2 rounded-lg border px-3.5 py-2.5 text-xs font-mono transition-all duration-200 cursor-pointer ${
                 emailCopied
                   ? "border-green-500/50 bg-green-500/10 text-green-300"
                   : "border-[#202433] text-[#9ca3af] hover:border-[#333a50] hover:text-white"
@@ -101,9 +106,43 @@ const Hero = () => {
             </button>
           </div>
 
+          {/* Social links row */}
+          <div className="mt-5 flex items-center gap-1 font-mono text-[11px] text-[#6b7280]">
+            {HERO_SOCIAL_LINKS.map((link, i) => (
+              <span key={link.platform} className="flex items-center gap-1">
+                {i > 0 && <span className="mx-1 text-[#2d3245]">·</span>}
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => playClickSound()}
+                  className="transition-colors hover:text-white"
+                >
+                  {link.platform}
+                </a>
+              </span>
+            ))}
+          </div>
+
           {/* Activity & 30-Day Heatmap Telemetry Widget */}
-          <div className="mt-8">
+          <div className="mt-6">
             <LatestPush />
+          </div>
+        </div>
+
+        {/* Mobile avatar — circular, shows below status badges */}
+        <div className="flex md:hidden items-center gap-3 mt-5 mb-1">
+          <div className="relative h-10 w-10 overflow-hidden rounded-full border border-[#252a38] shrink-0">
+            <Image
+              src="/assets/avatar.webp"
+              alt={`${personal.name}`}
+              width={40}
+              height={40}
+              className="h-full w-full object-cover object-center"
+            />
+          </div>
+          <div className="font-mono text-[11px] text-[#6b7280]">
+            <span className="text-white font-medium">{personal.city}</span> · {personal.country} · Open to remote
           </div>
         </div>
 
@@ -116,7 +155,7 @@ const Hero = () => {
               alt={`${personal.name} - ${personal.role}`}
               width={320}
               height={400}
-              loading="eager"
+              priority
               className="block h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
             />
 

@@ -64,7 +64,7 @@ export const PORTFOLIO_DATA = {
     availableForWork: true,
     resumeUrl: "/resume.pdf",
     bioShort:
-      "I'm an entry-level fullstack developer based in Jaipur. I build web apps and browser tools with React, TypeScript, Node.js, and MongoDB — focused on clean code, practical UX, and learning every day.",
+      "I build things for the open web — a distraction-free Firefox extension with real users, a browser-based desktop OS running at 60 FPS, and a full-stack video platform with production-grade auth. Self-taught since 2022. Based in Jaipur, open to remote.",
   },
 
   socialLinks: [
@@ -80,8 +80,8 @@ export const PORTFOLIO_DATA = {
     },
     {
       platform: "X",
-      handle: "@manassingh",
-      href: "https://twitter.com/manassingh",
+      handle: "@manasdotio",
+      href: "https://x.com/manasdotio",
     },
     {
       platform: "Email",
@@ -122,9 +122,9 @@ export const PORTFOLIO_DATA = {
   ] as SkillItem[],
 
   metrics: [
-    { value: "60 FPS", label: "Window manager frame rate", enabled: true },
-    { value: "0 ms", label: "FOUC on Firefox extension", enabled: true },
-    { value: "3", label: "Fullstack apps shipped", enabled: true },
+    { value: "60 FPS", label: "Browser OS window manager", enabled: true },
+    { value: "0 ms", label: "Content flash on Firefox ext.", enabled: true },
+    { value: "3+", label: "Shipped projects with real users", enabled: true },
     { value: "Open", label: "To full-time & remote roles", enabled: true },
   ] as MetricItem[],
 
@@ -160,10 +160,10 @@ export const PORTFOLIO_DATA = {
   ] as TimelineItem[],
 
   currentFocus: [
-    "Seeking entry-level / junior Fullstack or Frontend developer roles",
-    "Based in Jaipur, India · Open to remote or relocation",
-    "Practicing problem solving, data structures & system design basics",
-    "Building side projects to learn new tools and patterns",
+    "Actively interviewing for fullstack / frontend roles",
+    "Based in Jaipur · Open to remote or relocation",
+    "Daily builder — check GitHub activity above",
+    "Strong in React, TypeScript, Node.js, MongoDB, PostgreSQL",
   ],
 
   projects: [
@@ -268,7 +268,7 @@ export const PORTFOLIO_DATA = {
       slug: "vividstream",
       name: "VividStream",
       year: 2025,
-      status: "Live",
+      status: "In Progress",
       enabled: true,
       description:
         "Full-stack MERN video streaming platform with JWT access/refresh token rotation via HttpOnly cookies, Cloudinary-backed media pipeline, and MongoDB aggregation pipelines for feed rankings, watch history, and analytics.",
