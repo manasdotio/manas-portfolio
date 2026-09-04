@@ -25,10 +25,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${project.name} — Technical Case Study | Manas Singh`,
+    title: `${project.name} — Technical Case Study`,
     description: project.caseStudy.tagline,
+    keywords: [project.name, ...project.tags, "Manas Singh", "Technical Case Study", "Web Development"],
+    alternates: {
+      canonical: `https://manassingh.dev/projects/${project.slug}`,
+    },
     openGraph: {
-      title: `${project.name} — Case Study`,
+      title: `${project.name} — Technical Case Study | Manas Singh`,
+      description: project.caseStudy.tagline,
+      url: `https://manassingh.dev/projects/${project.slug}`,
+      images: [
+        {
+          url: project.image,
+          alt: `${project.name} preview screenshot`,
+        },
+      ],
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.name} — Technical Case Study | Manas Singh`,
       description: project.caseStudy.tagline,
       images: [project.image],
     },
@@ -48,8 +65,30 @@ export default async function ProjectDetailPage({ params }: Props) {
   const currentIndex = enabledProjects.findIndex((p) => p.slug === slug);
   const nextProject = enabledProjects[(currentIndex + 1) % enabledProjects.length];
 
+  const projectJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: project.name,
+    description: project.description,
+    applicationCategory: "WebApplication",
+    operatingSystem: "Web browser",
+    author: {
+      "@type": "Person",
+      name: "Manas Singh",
+      url: "https://manassingh.dev",
+    },
+    offers: {
+      "@type": "Offer",
+      price: "0",
+    },
+  };
+
   return (
     <div className="min-h-screen w-full bg-[#07080b] text-[#e5e7eb] selection:bg-blue-600 selection:text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd) }}
+      />
       {/* Top Sticky Bar */}
       <header className="sticky top-0 z-50 border-b border-[#202534] bg-[#07080b]/85 px-6 py-3.5 backdrop-blur-md">
         <div className="mx-auto flex max-w-5xl items-center justify-between">
